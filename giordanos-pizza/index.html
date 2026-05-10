@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authentic Chicago Deep Dish Pizza | Giordano's Pizza</title>
+  <meta name="description" content="Serving Chicago-style deep dish stuffed pizza since 1974. Explore our menu and place an online order for delivery or carryout from a Giordano's near you." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap');
+    .font-playfair { font-family: 'Playfair Display', Georgia, serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+    .hero-overlay { background: linear-gradient(135deg, rgba(10,0,0,0.82) 0%, rgba(180,20,20,0.45) 60%, rgba(0,0,0,0.2) 100%); }
+    .promo-bar { background: linear-gradient(90deg, #8B0000 0%, #C0392B 50%, #8B0000 100%); }
+    .cheese-pull { text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+    .sticky-mobile-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; }
+    @keyframes pulse-cta { 0%, 100% { box-shadow: 0 0 0 0 rgba(220,38,38,0.5); } 50% { box-shadow: 0 0 0 12px rgba(220,38,38,0); } }
+    .pulse-btn { animation: pulse-cta 2.5s infinite; }
+  </style>
+</head>
+<body class="font-inter bg-stone-950 text-white">
+
+  <!-- Promo Banner -->
+  <div class="promo-bar text-white text-center py-2 px-4 text-sm font-semibold tracking-wide">
+    🍕 <span class="font-bold">TAVERN TOGETHER:</span> $15 OFF any Tavern Style Pizza — Mon–Thu, orders over $50. Club Gio Members Only. Ends May 21.
+    <a href="#order" class="ml-3 underline font-bold hover:text-yellow-300 transition">Order Now →</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="bg-stone-950 border-b border-stone-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2">
+        <img src="https://www.giordanos.com/wp-content/uploads/2019/11/giordanos-logo.svg" alt="Giordano's Pizza" class="h-9" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=120&q=80';this.className='h-9 rounded';" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-stone-300">
+        <a href="#menu" class="hover:text-red-400 transition">Menu</a>
+        <a href="#locations" class="hover:text-red-400 transition">Locations</a>
+        <a href="#catering" class="hover:text-red-400 transition">Catering</a>
+        <a href="#ship" class="hover:text-red-400 transition">Ship Frozen</a>
+        <a href="#giftcards" class="hover:text-red-400 transition">Gift Cards</a>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center gap-3">
+        <a href="https://www.giordanos.com/order" class="hidden sm:inline-flex items-center gap-2 bg-red-700 hover:bg-red-600 text-white font-bold px-5 py-2.5 rounded-lg transition pulse-btn text-sm">
+          🛒 Order Now
+        </a>
+        <!-- Hamburger mobile -->
+        <button class="md:hidden text-white p-2" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-stone-900 border-t border-stone-800 px-4 py-4 space-y-3 text-sm font-semibold text-stone-300">
+      <a href="#menu" class="block hover:text-red-400">Menu</a>
+      <a href="#locations" class="block hover:text-red-400">Locations</a>
+      <a href="#catering" class="block hover:text-red-400">Catering & Events</a>
+      <a href="#ship" class="block hover:text-red-400">Ship a Frozen Pizza</a>
+      <a href="#giftcards" class="block hover:text-red-400">Gift Cards</a>
+      <a href="https://www.giordanos.com/order" class="block bg-red-700 text-white text-center py-3 rounded-lg font-bold">Order Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=85" 
+        alt="Giordano's legendary Chicago deep dish pizza" 
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="hero-overlay absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24 md:py-32 w-full">
+      <div class="max-w-2xl">
+        <!-- Trust badge -->
+        <div class="inline-flex items-center gap-2 bg-red-800 bg-opacity-80 text-yellow-300 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+          ★ Authentic Chicago Deep Dish Since 1974
+        </div>
+        <h1 class="font-playfair text-5xl md:text-7xl font-black leading-tight cheese-pull mb-6">
+          Chicago's Most<br />
+          <span class="text-red-400">Legendary</span><br />
+          Deep Dish Pizza
+        </h1>
+        <p class="text-lg md:text-xl text-stone-200 mb-8 leading-relaxed max-w-xl">
+          Flaky buttery double crust. Proprietary Wisconsin mozzarella. Hand-picked California tomatoes. 50+ years of perfecting every bite.
+        </p>
+        <!-- CTA Group -->
+        <div class="flex flex-col sm:flex-row gap-4 mb-10">
+          <a href="https://www.giordanos.com/order" class="flex items-center justify-center gap-3 bg-red-600 hover:bg-red-500 text-white font-bold text-lg px-8 py-4 rounded-xl transition pulse-btn shadow-2xl">
+            🛒 Order Delivery & Pickup
+          </a>
+          <a href="#locations" class="flex items-center justify-center gap-3 bg-white bg-opacity-10 hover:bg-opacity-20 border border-white border-opacity-30 text-white font-semibold text-lg px-8 py-4 rounded-xl transition backdrop-blur-sm">
+            📍 Find a Location
+          </a>
+        </div>
+        <!-- Trust Micro-signals -->
+        <div class="flex flex-wrap gap-6 text-sm text-stone-300">
+          <span class="flex items-center gap-2"><span class="text-yellow-400">★★★★★</span> Beloved since 1974</span>
+          <span class="flex items-center gap-2"><span class="text-green-400">✓</span> Delivery & Carryout</span>
+          <span class="flex items-center gap-2"><span class="text-blue-400">✈</span> Ship Nationwide</span>
+        </div>
+      </div>
+    </div>
+    <!-- Scroll hint -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-stone-400 animate-bounce hidden md:block">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="bg-gradient-to-r from-stone-900 via-red-950 to-stone-900 border-y border-red-900">
+    <div class="max-w-7xl mx-auto px-6 py-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div>
+        <div class="text-3xl font-black font-playfair text-red-400">1974</div>
+        <div class="text-xs text-stone-400 font-semibold uppercase tracking-wide mt-1">Founded in Chicago</div>
+      </div>
+      <div>
+        <div class="text-3xl font-black font-playfair text-red-400">100%</div>
+        <div class="text-xs text-stone-400 font-semibold uppercase tracking-wide mt-1">Wisconsin Mozzarella</div>
+      </div>
+      <div>
+        <div class="text-3xl font-black font-playfair text-red-400">Fresh</div>
+        <div class="text-xs text-stone-400 font-semibold uppercase tracking-wide mt-1">Made Daily In-House</div>
+      </div>
+      <div>
+        <div class="text-3xl font-black font-playfair text-red-400">50+</div>
+        <div class="text-xs text-stone-400 font-semibold uppercase tracking-wide mt-1">Years of Perfection</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pizza Menu Section -->
+  <section id="menu" class="bg-gradient-to-b from-stone-950 to-stone-900 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-red-400 font-bold uppercase tracking-widest text-sm mb-3">Our Pizzas</p>
+        <h2 class="font-playfair text-4xl md:text-5xl font-black text-white mb-4">Three Ways to Love Giordano's</h2>
+        <p class="text-stone-400 max-w-xl mx-auto">Every style crafted with the same legendary ingredients. Pick your crust, pile on your favorites.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Stuffed Deep Dish -->
+        <div class="card-hover bg-stone-800 rounded-2xl overflow-hidden border border-stone-700 group">
+          <div class="relative overflow-hidden h-56">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80" alt="Stuffed Deep Dish Pizza" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Our Signature</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-playfair text-2xl font-bold text-white mb-3">Stuffed Deep Dish</h3>
+            <p class="text-stone-400 text-sm leading-relaxed mb-5">Our legendary stuffed deep-dish pizza starts with a flaky, buttery double crust baked to golden perfection. Packed with proprietary Wisconsin mozzarella and your favorite toppings, then topped with our signature bold tomato sauce. Every bite is cheesy, saucy, and crave-worthy.</p>
+            <a href="https://www.giordanos.com/order" class="block text-center bg-red-600 hover:bg-red-500 text-white font-bold py-3 rounded-xl transition text-sm">Order Stuffed Deep Dish →</a>
+          </div>
+        </div>
+
+        <!-- Traditional Thin Crust -->
+        <div class="card-hover bg-stone-800 rounded-2xl overflow-hidden border border-stone-700 group">
+          <div class="relative overflow-hidden h-56">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80" alt="Traditional Thin Crust Pizza" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-playfair text-2xl font-bold text-white mb-3">Traditional Thin Crust</h3>
+            <p class="text-stone-400 text-sm leading-relaxed mb-5">A flaky crust that strikes the perfect balance between light and satisfying. Featuring our rich tomato sauce, melty mozzarella, and your favorite toppings. Cut into classic Chicago-style squares — great for sharing.</p>
+            <a href="https://www.giordanos.com/order" class="block text-center bg-stone-700 hover:bg-stone-600 text-white font-bold py-3 rounded-xl transition text-sm">Order Thin Crust →</a>
+          </div>
+        </div>
+
+        <!-- Tavern Style -->
+        <div class="card-hover bg-stone-800 rounded-2xl overflow-hidden border border-yellow-700 group relative">
+          <div class="absolute top-4 right-4 z-10 bg-yellow-500 text-stone-900 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wide">$15 OFF This Week</div>
+          <div class="relative overflow-hidden h-56">
+            <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=800&q=80" alt="Tavern Style Pizza" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-playfair text-2xl font-bold text-white mb-3">Tavern Style</h3>
+            <p class="text-stone-400 text-sm leading-relaxed mb-5">Very thin and extremely crispy, baked to a golden crunch and topped edge-to-edge with premium ingredients. Cut into squares and packed with flavor — this is tavern-style pizza the Giordano's way.</p>
+            <a href="https://www.giordanos.com/order" class="block text-center bg-yellow-500 hover:bg-yellow-400 text-stone-900 font-bold py-3 rounded-xl transition text-sm">Order Tavern Style — $15 Off →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="https://www.giordanos.com/menu" class="inline-flex items-center gap-2 text-red-400 hover:text-red-300 font-semibold transition">
+          View Full Menu & All Toppings →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Feature Section -->
+  <section class="relative overflow-hidden py-20 px-6">
+    <div class="absolute inset-0 bg-gradient-to-br from-red-900 via-red-800 to-stone-900"></div>
+    <div class="absolute inset-0 opacity-10">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=40" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 bg-yellow-400 text-stone-900 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+        ⏰ Limited Time — Ends May 21st
+      </div>
+      <h2 class="font-playfair text-4xl md:text-6xl font-black text-white mb-4">Tavern Together</h2>
+      <p class="text-yellow-300 text-2xl font-bold mb-6">$15 OFF Any Tavern Style Pizza</p>
+      <div class="flex flex-wrap justify-center gap-6 text-stone-200 text-sm mb-10">
+        <span class="flex items-center gap-2 bg-white bg-opacity-10 px-4 py-2 rounded-full">📅 Monday–Thursday Only</span>
+        <span class="flex items-center gap-2 bg-white bg-opacity-10 px-4 py-2 rounded-full">💰 Orders Over $50</span>
+        <span class="flex items-center gap-2 bg-white bg-opacity-10 px-4 py-2 rounded-full">🏅 Club Gio Members Only</span>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://www.giordanos.com/order" class="flex items-center justify-center gap-3 bg-white text-red-800 font-black text-lg px-10 py-4 rounded-xl hover:bg-yellow-300 transition shadow-xl">
+          🍕 Order & Save $15
+        </a>
+        <a href="https://www.giordanos.com/club-gio" class="flex items-center justify-center gap-3 bg-transparent border-2 border-white text-white font-bold text-lg px-10 py-4 rounded-xl hover:bg-white hover:text-red-800 transition">
+          Join Club Gio Free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ingredients Story -->
+  <section class="bg-gradient-to-b from-stone-900 to-stone-950 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="text-red-400 font-bold uppercase tracking-widest text-sm mb-3">What Makes Us Different</p>
+        <h2 class="font-playfair text-4xl md:text-5xl font-black text-white mb-4">The Architecture of Our Deep Dish</h2>
+        <p class="text-stone-400 max-w-xl mx-auto">We don't cut corners. Every ingredient is chosen with obsessive care — because the best pizza starts with the best ingredients.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Mozzarella -->
+        <div class="bg-gradient-to-b from-stone-800 to-stone-900 rounded-2xl p-8 border border-stone-700 text-center">
+          <div class="w-16 h-16 bg-yellow-500 bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">🧀</span>
+          </div>
+          <h3 class="font-playfair text-2xl font-bold text-white mb-4">Wisconsin Mozzarella</h3>
+          <p class="text-stone-400 text-sm leading-relaxed">Our signature mozzarella is specially produced for Giordano's by skilled Wisconsin cheese makers using only the finest milk from local farmers. Aged to perfection and freshly shredded in-house every day for that legendary Giordano's melt.</p>
+        </div>
+
+        <!-- Tomatoes -->
+        <div class="bg-gradient-to-b from-stone-800 to-stone-900 rounded-2xl p-8 border border-stone-700 text-center">
+          <div class="w-16 h-16 bg-red-500 bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">🍅</span>
+          </div>
+          <h3 class="font-playfair text-2xl font-bold text-white mb-4">Hand-Picked Tomatoes</h3>
+          <p class="text-stone-400 text-sm leading-relaxed">We use only the finest tomatoes in our sauce, freshly prepared in-house each day. Exclusively grown in Mendocino County, Northern California — renowned for producing some of the world's best tomatoes, nurtured by local farmers and picked at peak ripeness.</p>
+        </div>
+
+        <!-- Flour -->
+        <div class="bg-gradient-to-b from-stone-800 to-stone-900 rounded-2xl p-8 border border-stone-700 text-center">
+          <div class="w-16 h-16 bg-amber-600 bg-opacity-20 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <span class="text-3xl">🌾</span>
+          </div>
+          <h3 class="font-playfair text-2xl font-bold text-white mb-4">Midwest Flour</h3>
+          <p class="text-stone-400 text-sm leading-relaxed">Our dough starts with flour from a single mill in Minnesota — unbleached and a special proprietary blend of North and South Dakota wheat. This is what gives our legendary crust its distinctive flaky, buttery texture that can't be replicated.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Order -->
+  <section class="bg-gradient-to-r from-red-950 via-stone-900 to-red-950 py-16 px-6 border-y border-red-900">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-playfair text-3xl md:text-4xl font-black text-white">Getting Your Giordano's is Easy</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white font-black text-xl">1</div>
+          <h3 class="text-white font-bold text-lg">Order Online or Visit</h3>
+          <p class="text-stone-400 text-sm">Order delivery or carryout online, or visit one of our Chicago-area locations.</p>
+        </div>
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white font-black text-xl">2</div>
+          <h3 class="text-white font-bold text-lg">Choose Your Style</h3>
+          <p class="text-stone-400 text-sm">Pick from Stuffed Deep Dish, Traditional Thin Crust, or Tavern Style — then pile on your toppings.</p>
+        </div>
+        <div class="flex flex-col items-center gap-4">
+          <div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center text-white font-black text-xl">3</div>
+          <h3 class="text-white font-bold text-lg">Enjoy Every Bite</h3>
+          <p class="text-stone-400 text-sm">Experience 50+ years of Chicago pizza perfection — cheesy, saucy, and crave-worthy every single time.</p>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="https://www.giordanos.com/order" class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-500 text-white font-black text-xl px-12 py-5 rounded-xl transition shadow-2xl pulse-btn">
+          🍕 Start Your Order Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ship Nationwide -->
+  <section id="ship" class="bg-gradient-to-b from-stone-950 to-stone-900 py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-red-400 font-bold uppercase tracking-widest text-sm mb-3">Nationwide Shipping</p>
+          <h2 class="font-playfair text-4xl md:text-5xl font-black text-white mb-6">
+            Send the Taste of Chicago Anywhere in the U.S.
+          </h2>
+          <p class="text-stone-400 leading-relaxed mb-8">
+            Can't make it to Chicago? We'll bring Chicago to you. Our frozen deep dish pizzas ship nationwide — the same legendary recipe, ready to bake in your own oven. Perfect for gifts, care packages, or treating yourself.
+          </p>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <span class="text-green-400 font-bold mt-0.5">✓</span>
+              <span class="text-stone-300 text-sm">Same proprietary Wisconsin mozzarella and California tomato sauce</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-400 font-bold mt-0.5">✓</span>
+              <span class="text-stone-300 text-sm">Flash-frozen to lock in freshness — bake at home in minutes</span>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-green-400 font-bold mt-0.5">✓</span>
+              <span class="text-stone-300 text-sm">Makes a legendary gift — arrives frozen and ready to wow</span>
+            </div>
+          </div>
+          <a href="https://www.giordanos.com/ship-a-frozen-pizza" class="inline-flex items-center gap-3 bg-white text-stone-900 font-black text-base px-8 py-4 rounded-xl hover:bg-yellow-300 transition shadow-xl">
+            ✈ Ship a Frozen Pizza
+          </a>
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=800&q=80" alt="Giordano's frozen pizza shipping" class="w-full h-96 object-cover" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Finder CTA -->
+  <section id="locations" class="relative overflow-hidden py-20 px-6">
+    <div class="absolute inset-0 bg-gradient-to-br from-stone-900 via-red-950 to-stone-950"></div>
+    <div class="relative z-10 max-w-3xl mx-auto text-center">
+      <p class="text-red-400 font-bold uppercase tracking-widest text-sm mb-3">Find Us</p>
+      <h2 class="font-playfair text-4xl md:text-5xl font-black text-white mb-4">Find Your Nearest Giordano's</h2>
+      <p class="text-stone-400 mb-10">Multiple locations across Chicago and beyond. Dine in, carry out, or order delivery — we're ready when you are.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://www.giordanos.com/locations" class="flex items-center justify-center gap-3 bg-red-600 hover:bg-red-500 text-white font-bold text-lg px-10 py-4 rounded-xl transition shadow-xl">
+          📍 Find a Location
+        </a>
+        <a href="https://www.giordanos.com/catering" id="catering" class="flex items-center justify-center gap-3 bg-white bg-opacity-10 border border-white border-opacity-30 text-white font-semibold text-lg px-10 py-4 rounded-xl hover:bg-opacity-20 transition">
+          🎉 Catering & Events
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gift Cards -->
+  <section id="giftcards" class="bg-gradient-to-r from-stone-900 to-stone-950 py-16 px-6 border-t border-stone-800">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="font-playfair text-3xl font-black text-white mb-2">Give the Gift of Deep Dish 🍕</h2>
+        <p class="text-stone-400">Giordano's gift cards — the gift that always satisfies. Available online and in-store.</p>
+      </div>
+      <a href="https://www.giordanos.com/gift-cards" class="flex-shrink-0 bg-yellow-400 hover:bg-yellow-300 text-stone-900 font-black text-base px-8 py-4 rounded-xl transition shadow-xl">
+        Buy Gift Cards →
+      </a>
+    </div>
+  </section>
+
+  <!-- Instagram Highlight - Compact -->
+  <section class="bg-stone-950 py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-playfair text-3xl font-black text-white mb-2">Follow the Cheese Pull</h2>
+        <a href="https://www.instagram.com/giordanospizza" target="_blank" class="text-red-400 hover:text-red-300 font-semibold text-sm transition">@giordanospizza on Instagram →</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <a href="https://www.instagram.com/giordanospizza" target="_blank" class="relative overflow-hidden rounded-xl aspect-square group">
+          <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80" alt="Giordano's Instagram" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition flex items-center justify-center">
+            <span class="text-white opacity-0 group-hover:opacity-100 font-bold text-sm transition">View Post</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/giordanospizza" target="_blank" class="relative overflow-hidden rounded-xl aspect-square group">
+          <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=400&q=80" alt="Giordano's Instagram" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition flex items-center justify-center">
+            <span class="text-white opacity-0 group-hover:opacity-100 font-bold text-sm transition">View Post</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/giordanospizza" target="_blank" class="relative overflow-hidden rounded-xl aspect-square group">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=400&q=80" alt="Giordano's Instagram" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition flex items-center justify-center">
+            <span class="text-white opacity-0 group-hover:opacity-100 font-bold text-sm transition">View Post</span>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/giordanospizza" target="_blank" class="relative overflow-hidden rounded-xl aspect-square group">
+          <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=400&q=80" alt="Giordano's Instagram" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition flex items-center justify-center">
+            <span class="text-white opacity-0 group-hover:opacity-100 font-bold text-sm transition">View Post</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-stone-950 border-t border-stone-800 pt-16 pb-24 md:pb-8 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
+      <!-- Brand -->
+      <div class="col-span-2 md:col-span-2">
+        <h3 class="font-playfair text-2xl font-black text-white mb-3">Giordano's</h3>
+        <p class="text-stone-400 text-sm leading-relaxed mb-4">Serving authentic Chicago-style deep dish stuffed pizza since 1974. Made with proprietary Wisconsin mozzarella, hand-picked California tomatoes, and Midwest flour.</p>
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/giordanospizza" target="_blank" class="w-9 h-9 bg-stone-800 rounded-lg flex items-center justify-center text-stone-400 hover:text-white hover:bg-red-700 transition text-sm font-bold">IG</a>
+          <a href="https://www.facebook.com/giordanos" target="_blank" class="w-9 h-9 bg-stone-800 rounded-lg flex items-center justify-center text-stone-400 hover:text-white hover:bg-blue-700 transition text-sm font-bold">FB</a>
+          <a href="https://www.tiktok.com/@giordanospizza" target="_blank" class="w-9 h-9 bg-stone-800 rounded-lg flex items-center justify-center text-stone-400 hover:text-white hover:bg-stone-600 transition text-sm font-bold">TK</a>
+        </div>
+      </div>
+      <!-- Menus -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">Menus</h4>
+        <ul class="space-y-2 text-stone-400 text-sm">
+          <li><a href="https://www.giordanos.com/menu" class="hover:text-red-400 transition">Full Menu</a></li>
+          <li><a href="https://www.giordanos.com/menu/catering" class="hover:text-red-400 transition">Catering</a></li>
+          <li><a href="https://www.giordanos.com/nutritionals" class="hover:text-red-400 transition">Nutritionals</a></li>
+        </ul>
+      </div>
+      <!-- Order -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">Order</h4>
+        <ul class="space-y-2 text-stone-400 text-sm">
+          <li><a href="https://www.giordanos.com/order" class="hover:text-red-400 transition">Delivery & Pickup</a></li>
+          <li><a href="https://www.giordanos.com/ship-a-frozen-pizza" class="hover:text-red-400 transition">Ship a Frozen Pizza</a></li>
+          <li><a href="https://www.giordanos.com/gift-cards" class="hover:text-red-400 transition">Gift Cards</a></li>
+          <li><a href="https://www.giordanos.com/locations" class="hover:text-red-400 transition">All Locations</a></li>
+        </ul>
+      </div>
+      <!-- About -->
+      <div>
+        <h4 class="text-white font-bold text-sm uppercase tracking-wide mb-4">About</h4>
+        <ul class="space-y-2 text-stone-400 text-sm">
+          <li><a href="https://www.giordanos.com/about" class="hover:text-red-400 transition">Our Story</a></li>
+          <li><a href="https://www.giordanos.com/blog" class="hover:text-red-400 transition">Blog</a></li>
+          <li><a href="https://www.giordanos.com/press" class="hover:text-red-400 transition">Press</a></li>
+          <li><a href="https://www.giordanos.com/careers" class="hover:text-red-400 transition">Join Our Team</a></li>
+          <li><a href="https://www.giordanos.com/club-gio" class="hover:text-red-400 transition">Club Gio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-stone-800 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-stone-500 text-xs">© Giordano's 2025. All rights reserved.</p>
+      <div class="flex gap-6 text-stone-500 text-xs">
+        <a href="#" class="hover:text-stone-300">Privacy Policy</a>
+        <a href="#" class="hover:text-stone-300">Accessibility</a>
+        <a href="#" class="hover:text-stone-300">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile CTA Bar -->
+  <div class="sticky-mobile-bar md:hidden bg-stone-950 border-t border-stone-700 flex gap-0">
+    <a href="https://www.giordanos.com/order" class="flex-1 flex items-center justify-center gap-2 bg-red-600 text-white font-black text-sm py-4 hover:bg-red-500 transition">
+      🛒 Order Now
+    </a>
+    <a href="https://www.giordanos.com/locations" class="flex-1 flex items-center justify-center gap-2 bg-stone-800 text-white font-semibold text-sm py-4 hover:bg-stone-700 transition border-l border-stone-700">
+      📍 Locations
+    </a>
+  </div>
+
+</body>
+</html>
