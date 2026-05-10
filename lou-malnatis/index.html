@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lou Malnati's | Chicago's Best Deep Dish Pizza Since 1971</title>
+  <meta name="description" content="Lou Malnati's Pizzeria is home to the best Deep Dish pizza in Chicago. Order online, ship nationwide, or find a location near you. Serving Chicago since 1971." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .bg-lou-red { background-color: #C8102E; }
+    .text-lou-red { color: #C8102E; }
+    .border-lou-red { border-color: #C8102E; }
+    .bg-lou-cream { background-color: #FAF6EF; }
+    .bg-lou-dark { background-color: #1A1A1A; }
+    .btn-primary {
+      background-color: #C8102E;
+      color: white;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border: 2px solid #C8102E;
+    }
+    .btn-primary:hover { background-color: #a00d24; border-color: #a00d24; transform: translateY(-1px); box-shadow: 0 4px 15px rgba(200,16,46,0.4); }
+    .btn-secondary {
+      background-color: transparent;
+      color: white;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border: 2px solid white;
+    }
+    .btn-secondary:hover { background-color: white; color: #C8102E; }
+    .sticky-order { position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; }
+    @media (min-width: 768px) { .sticky-order { display: none; } }
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+    .section-divider { height: 4px; background: linear-gradient(to right, #C8102E, #8B0000); }
+    .star { color: #FFD700; }
+  </style>
+</head>
+<body class="bg-white">
+
+  <!-- ===== STICKY NAV ===== -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="https://www.loumalnatis.com" class="flex-shrink-0">
+        <img src="https://www.loumalnatis.com/wp-content/themes/loumalnatis2020/images/logo.svg" alt="Lou Malnati's Pizzeria" class="h-10" onerror="this.onerror=null;this.src='';this.parentElement.innerHTML='<span class=\'font-display text-lou-red text-xl font-black\'>Lou Malnati\'s</span>'" />
+      </a>
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-semibold text-gray-700">
+        <a href="https://www.loumalnatis.com/about" class="hover:text-lou-red transition-colors">About</a>
+        <a href="https://www.loumalnatis.com/menu" class="hover:text-lou-red transition-colors">Menu</a>
+        <a href="https://www.loumalnatis.com/locations" class="hover:text-lou-red transition-colors">Locations</a>
+        <a href="https://www.loumalnatis.com/rewards" class="hover:text-lou-red transition-colors">Rewards</a>
+        <a href="https://www.loumalnatis.com/catering" class="hover:text-lou-red transition-colors">Catering</a>
+        <a href="https://www.loumalnatis.com/ship-a-pizza" class="hover:text-lou-red transition-colors">Ship a Pizza</a>
+        <a href="https://www.loumalnatis.com/reservations" class="hover:text-gray-900 transition-colors">Reservations</a>
+        <a href="https://order.loumalnatis.com" target="_blank" class="btn-primary px-5 py-2.5 rounded-full text-sm">Order Now</a>
+      </div>
+      <!-- Mobile hamburger -->
+      <button id="menuToggle" class="md:hidden p-2 rounded-md text-gray-700" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3">
+      <a href="https://www.loumalnatis.com/about" class="block py-2 font-semibold text-gray-700 hover:text-lou-red">About</a>
+      <a href="https://www.loumalnatis.com/menu" class="block py-2 font-semibold text-gray-700 hover:text-lou-red">Menu</a>
+      <a href="https://www.loumalnatis.com/locations" class="block py-2 font-semibold text-gray-700 hover:text-lou-red">Locations</a>
+      <a href="https://www.loumalnatis.com/rewards" class="block py-2 font-semibold text-gray-700 hover:text-lou-red">Rewards</a>
+      <a href="https://www.loumalnatis.com/catering" class="block py-2 font-semibold text-gray-700 hover:text-lou-red">Catering</a>
+      <a href="https://www.loumalnatis.com/ship-a-pizza" class="block py-2 font-semibold text-gray-700 hover:text-lou-red">Ship a Pizza</a>
+      <a href="https://www.loumalnatis.com/reservations" class="block py-2 font-semibold text-gray-700 hover:text-lou-red">Reservations</a>
+      <a href="https://order.loumalnatis.com" target="_blank" class="btn-primary block text-center px-5 py-3 rounded-full mt-2">Order Now</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="relative min-h-screen md:min-h-[90vh] flex items-center overflow-hidden">
+    <!-- Background image -->
+    <div class="absolute inset-0">
+      <img 
+        src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80" 
+        alt="Chicago Deep Dish Pizza" 
+        class="w-full h-full object-cover object-center"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20"></div>
+    </div>
+    <!-- Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-0 w-full">
+      <div class="max-w-2xl">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-lou-red/90 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          Chicago's Legendary Deep Dish Since 1971
+        </div>
+        <h1 class="font-display text-5xl md:text-7xl font-black text-white leading-tight mb-4">
+          The Best<br/>
+          <span class="text-lou-red">Deep Dish</span><br/>
+          In Chicago.
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 mb-4 leading-relaxed">
+          Buttery Buttercrust™, Wisconsin mozzarella, vine-ripened tomatoes, and a sausage blend like no other. Crafted with the same recipe since 1971.
+        </p>
+        <!-- Stars -->
+        <div class="flex items-center gap-2 mb-8">
+          <div class="flex gap-0.5">
+            <span class="star text-xl">★</span>
+            <span class="star text-xl">★</span>
+            <span class="star text-xl">★</span>
+            <span class="star text-xl">★</span>
+            <span class="star text-xl">★</span>
+          </div>
+          <span class="text-gray-300 text-sm font-medium">50+ Years of Perfecting the Original</span>
+        </div>
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="https://order.loumalnatis.com" target="_blank" class="btn-primary px-8 py-4 rounded-full text-base text-center inline-block">
+            🍕 Order Deep Dish Now
+          </a>
+          <a href="https://www.loumalnatis.com/locations" class="btn-secondary px-8 py-4 rounded-full text-base text-center inline-block">
+            📍 Find a Location
+          </a>
+        </div>
+        <!-- Meal Deal Pill -->
+        <div class="mt-6 inline-flex items-center gap-2 bg-yellow-400/20 border border-yellow-400/50 text-yellow-300 text-sm font-semibold px-4 py-2 rounded-full">
+          🔥 Meal Deals starting at just $19.95 — <a href="https://order.loumalnatis.com" class="underline">Order now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="bg-lou-red text-white">
+    <div class="max-w-7xl mx-auto px-4 py-3">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center text-sm font-bold uppercase tracking-wide">
+        <div class="flex flex-col items-center gap-1">
+          <span class="text-2xl font-black">50+</span>
+          <span class="text-red-200 text-xs">Years Serving Chicago</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+          <span class="text-2xl font-black">60+</span>
+          <span class="text-red-200 text-xs">Locations</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+          <span class="text-2xl font-black">#1</span>
+          <span class="text-red-200 text-xs">Chicago Deep Dish</span>
+        </div>
+        <div class="flex flex-col items-center gap-1">
+          <span class="text-2xl font-black">🌎</span>
+          <span class="text-red-200 text-xs">Ships Nationwide</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SEASONAL PROMOTION BANNER ===== -->
+  <section class="bg-gradient-to-r from-pink-600 to-rose-500 text-white py-10 px-4">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="text-center md:text-left">
+        <div class="text-sm font-bold uppercase tracking-widest text-pink-200 mb-1">Limited Time</div>
+        <h2 class="font-display text-3xl md:text-4xl font-black mb-2">Hearts for Mother's Day ♥</h2>
+        <p class="text-pink-100 text-lg">Heart-shaped pizzas are back! Give Mom what she really wants this Mother's Day. Available May 8–10 at all locations.</p>
+      </div>
+      <a href="https://order.loumalnatis.com" target="_blank" class="flex-shrink-0 bg-white text-pink-600 font-black uppercase tracking-wide px-8 py-4 rounded-full hover:bg-pink-50 transition-colors text-base whitespace-nowrap">
+        Order Heart Pizza →
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== MENU CATEGORIES ===== -->
+  <section class="bg-lou-cream py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-lou-red text-sm font-bold uppercase tracking-widest mb-2">From Our Family To Yours</p>
+        <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-4">There's Something for Everyone</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">Since 1971, Lou Malnati's has proudly served Chicago's favorite Deep Dish pizza—and so much more.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Deep Dish -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=800&q=80" alt="Deep Dish Pizza" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
+            <div class="absolute top-4 left-4 bg-lou-red text-white text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full">Our Signature</div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-black text-gray-900 mb-2">Deep Dish</h3>
+            <p class="text-gray-600 mb-4">Flaky, buttery Buttercrust™ with fresh Wisconsin mozzarella and vine-ripened California tomatoes—pure Chicago perfection.</p>
+            <a href="https://www.loumalnatis.com/menu/deep-dish" class="text-lou-red font-bold text-sm uppercase tracking-wide hover:underline">View Deep Dish Menu →</a>
+          </div>
+        </div>
+        <!-- Thin Crust -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=800&q=80" alt="Thin Crust Pizza" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-black text-gray-900 mb-2">Thin Crust</h3>
+            <p class="text-gray-600 mb-4">Golden, crispy crust cut Chicago-style and loaded with Lou's signature flavors. A fan favorite for every pizza lover.</p>
+            <a href="https://www.loumalnatis.com/menu/thin-crust" class="text-lou-red font-bold text-sm uppercase tracking-wide hover:underline">View Thin Crust Menu →</a>
+          </div>
+        </div>
+        <!-- And More -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="relative h-56 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80" alt="Salads and more" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" />
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-2xl font-black text-gray-900 mb-2">And More!</h3>
+            <p class="text-gray-600 mb-4">Salads, wings, desserts, and more—there's something for everyone at Lou's. A full menu the whole family will love.</p>
+            <a href="https://www.loumalnatis.com/menu" class="text-lou-red font-bold text-sm uppercase tracking-wide hover:underline">View Full Menu →</a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://www.loumalnatis.com/menu" class="btn-primary px-8 py-4 rounded-full text-base inline-block">View Full Menu</a>
+        <a href="https://www.loumalnatis.com/catering" class="bg-gray-900 text-white font-bold uppercase tracking-wide px-8 py-4 rounded-full hover:bg-gray-800 transition-colors text-base inline-block">Catering Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT / STORY ===== -->
+  <section class="py-0 overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2">
+      <!-- Image -->
+      <div class="relative min-h-72 md:min-h-full">
+        <img 
+          src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80" 
+          alt="Lou Malnati's Restaurant" 
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+      </div>
+      <!-- Content -->
+      <div class="bg-gray-900 text-white p-10 md:p-16 flex flex-col justify-center">
+        <p class="text-lou-red text-sm font-bold uppercase tracking-widest mb-3">A Chicago Original</p>
+        <h2 class="font-display text-4xl md:text-5xl font-black mb-6 leading-tight">Handcrafted Tradition.<br/>Legendary Flavor.</h2>
+        <p class="text-gray-300 text-lg leading-relaxed mb-6">
+          For more than 50 years, the Malnati family has been perfecting Chicago's deep dish tradition in their pizzerias—built on quality ingredients and time-honored recipes. What started in Lincolnwood, Illinois in 1971 continues today, still driven by family, pride, and true Chicago spirit.
+        </p>
+        <div class="border-l-4 border-lou-red pl-4 mb-8">
+          <p class="text-gray-200 italic text-base leading-relaxed">
+            "We've stayed true to the original Chicago-style Deep Dish pizza recipe that Grandpa Malnati helped create in 1943 at Chicago's first Deep Dish pizzeria."
+          </p>
+        </div>
+        <a href="https://www.loumalnatis.com/about" class="btn-primary px-8 py-4 rounded-full text-base inline-block self-start">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT MAKES LOU'S SPECIAL ===== -->
+  <section class="bg-lou-cream py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-lou-red text-sm font-bold uppercase tracking-widest mb-3">Our Pizza</p>
+          <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-6">What's So Special About Lou's Pizza?</h2>
+          <p class="text-gray-700 text-lg leading-relaxed mb-6">
+            We've stayed true to the original Chicago-style Deep Dish pizza recipe that Grandpa Malnati helped create in 1943 at Chicago's first Deep Dish pizzeria.
+          </p>
+          <div class="space-y-4 mb-8">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-lou-red rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-gray-900">Signature Buttercrust™</p>
+                <p class="text-gray-600 text-sm">Flaky, buttery, and unlike anything else — our proprietary crust recipe.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-lou-red rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-gray-900">Vine-Ripened California Tomatoes</p>
+                <p class="text-gray-600 text-sm">Fresh, bright tomatoes sourced from California's finest growers.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-lou-red rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-gray-900">Wisconsin Mozzarella Cheese</p>
+                <p class="text-gray-600 text-sm">Premium Wisconsin mozzarella for that unmistakable stretch and melt.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-lou-red rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-gray-900">Exclusive Sausage Blend</p>
+                <p class="text-gray-600 text-sm">Our proprietary seasoning blend — a recipe we've guarded for decades.</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.loumalnatis.com/our-pizza" class="btn-primary px-8 py-4 rounded-full text-base inline-block">About Our Pizza</a>
+        </div>
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1604382355076-af4b0eb60143?auto=format&fit=crop&w=900&q=80" alt="Lou Malnati's Deep Dish Pizza slice" class="rounded-2xl shadow-2xl w-full object-cover h-96 md:h-auto" />
+          <div class="absolute -bottom-4 -left-4 bg-lou-red text-white p-4 rounded-xl shadow-xl">
+            <p class="font-black text-2xl">1943</p>
+            <p class="text-red-200 text-xs font-semibold uppercase tracking-wide">Original Recipe</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEAL DEALS CTA ===== -->
+  <section class="bg-gradient-to-br from-gray-900 to-gray-800 py-16 px-4 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80" alt="" class="w-full h-full object-cover" />
+    </div>
+    <div class="relative max-w-5xl mx-auto text-center">
+      <div class="inline-block bg-yellow-400 text-gray-900 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6">Hot Deal</div>
+      <h2 class="font-display text-4xl md:text-6xl font-black text-white mb-4">Meal Deals<br/><span class="text-yellow-400">Starting at $19.95</span></h2>
+      <p class="text-gray-300 text-lg mb-8 max-w-xl mx-auto">Get more of what you love — complete meals with Lou's legendary pizza at an unbeatable price. Terms & Conditions apply.</p>
+      <a href="https://order.loumalnatis.com" target="_blank" class="btn-primary px-10 py-5 rounded-full text-lg inline-block">
+        Order a Meal Deal Now
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== REWARDS ===== -->
+  <section class="bg-gradient-to-br from-red-700 to-red-900 py-16 px-4 text-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+            🎁 Free Pizza Offer
+          </div>
+          <h2 class="font-display text-4xl md:text-5xl font-black mb-4">Earn Rewards for Eating Lou's.</h2>
+          <p class="text-red-100 text-lg mb-6 leading-relaxed">Join Lou's Rewards and get more of what you love—first access to exclusive offers, points on every order, and <strong class="text-white">free pizza on your birthday</strong>. Sign up today to score a FREE pizza.</p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="https://www.loumalnatis.com/rewards" target="_blank" class="bg-white text-lou-red font-black uppercase tracking-wide px-8 py-4 rounded-full hover:bg-red-50 transition-colors text-base text-center">
+              Join Free — Get a Pizza
+            </a>
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+          <h3 class="font-bold text-xl mb-6 text-center">Member Benefits</h3>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🍕</span>
+              <div>
+                <p class="font-bold">FREE Pizza to Start</p>
+                <p class="text-red-200 text-sm">Get a free pizza just for signing up today</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">⭐</span>
+              <div>
+                <p class="font-bold">Points on Every Order</p>
+                <p class="text-red-200 text-sm">Earn points every time you order at Lou's</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🎂</span>
+              <div>
+                <p class="font-bold">Birthday Free Pizza</p>
+                <p class="text-red-200 text-sm">Celebrate your birthday with complimentary pizza</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🔔</span>
+              <div>
+                <p class="font-bold">Exclusive Early Access</p>
+                <p class="text-red-200 text-sm">First access to new menu items and special offers</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SHIP NATIONWIDE ===== -->
+  <section class="relative py-20 px-4 overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?auto=format&fit=crop&w=1600&q=80" alt="Pizza box" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-800/80"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1 text-white">
+        <p class="text-blue-300 text-sm font-bold uppercase tracking-widest mb-3">Ship Anywhere in the U.S.</p>
+        <h2 class="font-display text-4xl md:text-5xl font-black mb-4">Ship Chicago's Favorite Slice!</h2>
+        <p class="text-blue-100 text-lg mb-6 max-w-lg">9-inch Deep Dish pizzas made fresh and shipped frozen nationwide. Give the gift of Chicago, wherever you are.</p>
+        <a href="https://www.loumalnatis.com/ship-a-pizza" target="_blank" class="btn-primary px-8 py-4 rounded-full text-base inline-block">
+          🚀 Ship a Pizza
+        </a>
+      </div>
+      <div class="flex-1 flex justify-center">
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20 text-white text-center max-w-xs">
+          <p class="text-5xl mb-4">📦</p>
+          <p class="font-black text-2xl mb-2">Ships Frozen Fresh</p>
+          <p class="text-blue-200 text-sm">9-inch Deep Dish pies packed carefully and delivered right to your door — nationwide.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATERING + GIFTS + FUNDRAISE ===== -->
+  <section class="bg-lou-cream py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-display text-4xl md:text-5xl font-black text-gray-900 mb-3">More Ways to Love Lou's</h2>
+        <p class="text-gray-600 text-lg">From parties to fundraisers — we've got you covered.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Catering -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80" alt="Catering" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <p class="absolute bottom-4 left-4 text-white font-black text-xl">Party with Lou's</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">From birthdays to office parties, our catering packages and event spaces make every gathering a whole lot tastier.</p>
+            <div class="flex gap-3">
+              <a href="https://www.loumalnatis.com/catering" class="btn-primary px-5 py-2.5 rounded-full text-sm inline-block">Catering</a>
+              <a href="https://www.loumalnatis.com/plan-an-event" class="border-2 border-gray-900 text-gray-900 font-bold uppercase tracking-wide px-5 py-2.5 rounded-full text-sm hover:bg-gray-900 hover:text-white transition-colors inline-block">Plan Event</a>
+            </div>
+          </div>
+        </div>
+        <!-- Gift Cards -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80" alt="Gift cards" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <p class="absolute bottom-4 left-4 text-white font-black text-xl">Give the Gift of Lou's</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Share the joy of Chicago-style pizza with family and friends. Lou's gift cards and merchandise bring cheer to any occasion.</p>
+            <div class="flex gap-3">
+              <a href="https://www.loumalnatis.com/gift-cards" class="btn-primary px-5 py-2.5 rounded-full text-sm inline-block">Gift Cards</a>
+              <a href="https://www.loumalnatis.com/merchandise" class="border-2 border-gray-900 text-gray-900 font-bold uppercase tracking-wide px-5 py-2.5 rounded-full text-sm hover:bg-gray-900 hover:text-white transition-colors inline-block">Merchandise</a>
+            </div>
+          </div>
+        </div>
+        <!-- Fundraise -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover">
+          <div class="h-48 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=800&q=80" alt="Fundraising" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <p class="absolute bottom-4 left-4 text-white font-black text-xl">Fundraise with Lou's</p>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Partner with Lou's to raise dough for your school, team, or organization. It's an easy and delicious way to give back.</p>
+            <a href="https://www.loumalnatis.com/fundraising" class="btn-primary px-5 py-2.5 rounded-full text-sm inline-block">Fundraising Options</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEACHER APPRECIATION ===== -->
+  <section class="bg-gradient-to-r from-emerald-700 to-teal-600 py-14 px-4 text-white">
+    <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div>
+        <div class="text-sm font-bold uppercase tracking-widest text-emerald-200 mb-1">Ce-lou-brate Educators</div>
+        <h2 class="font-display text-3xl md:text-4xl font-black mb-2">Nominate a Teacher, Win Free Pizza for a Year!</h2>
+        <p class="text-emerald-100 text-lg">Honor the educators who make a difference every day. Nominate your favorite teacher for a chance to win free Lou's pizza for a year!</p>
+        <p class="text-emerald-200 text-xs mt-2">*Terms Apply</p>
+      </div>
+      <a href="https://www.loumalnatis.com/teacher" target="_blank" class="flex-shrink-0 bg-white text-emerald-700 font-black uppercase tracking-wide px-8 py-4 rounded-full hover:bg-emerald-50 transition-colors text-base whitespace-nowrap">
+        Nominate a Teacher →
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF / REVIEWS ===== -->
+  <section class="bg-gray-900 py-16 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-lou-red text-sm font-bold uppercase tracking-widest mb-2">What People Are Saying</p>
+        <h2 class="font-display text-4xl md:text-5xl font-black text-white mb-3">Chicago's Favorite. Legendary.</h2>
+        <div class="flex items-center justify-center gap-1 mb-2">
+          <span class="star text-2xl">★★★★★</span>
+        </div>
+        <p class="text-gray-400">Loved by Chicagoans and pizza fans worldwide for over 50 years.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+          <div class="flex gap-0.5 mb-3"><span class="star">★★★★★</span></div>
+          <p class="text-gray-200 italic mb-4">"Lou Malnati's is the gold standard of Chicago deep dish. No visit to Chicago is complete without it. The Buttercrust alone is worth the trip."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-lou-red rounded-full flex items-center justify-center text-white font-bold">J</div>
+            <div>
+              <p class="text-white font-semibold text-sm">James T.</p>
+              <p class="text-gray-500 text-xs">Chicago, IL</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+          <div class="flex gap-0.5 mb-3"><span class="star">★★★★★</span></div>
+          <p class="text-gray-200 italic mb-4">"I moved out of Chicago years ago and the best part? They ship nationwide! I get my Lou's fix wherever I am. The quality is exactly the same."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">S</div>
+            <div>
+              <p class="text-white font-semibold text-sm">Sarah M.</p>
+              <p class="text-gray-500 text-xs">Austin, TX</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-800 rounded-2xl p-6 border border-gray-700">
+          <div class="flex gap-0.5 mb-3"><span class="star">★★★★★</span></div>
+          <p class="text-gray-200 italic mb-4">"We cater all our office events with Lou Malnati's. Everyone raves about it every single time. The service is fantastic and the pizza is always perfect."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center text-white font-bold">M</div>
+            <div>
+              <p class="text-white font-semibold text-sm">Michael R.</p>
+              <p class="text-gray-500 text-xs">Corporate Client</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="relative py-24 px-4 overflow-hidden text-center">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=80" alt="" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/75"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto">
+      <h2 class="font-display text-5xl md:text-7xl font-black text-white mb-4 leading-tight">
+        Ready for the Best<br/><span class="text-lou-red">Deep Dish</span> of Your Life?
+      </h2>
+      <p class="text-gray-300 text-xl mb-8">Order online, find a location, or ship Chicago's legendary deep dish straight to your door.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://order.loumalnatis.com" target="_blank" class="btn-primary px-10 py-5 rounded-full text-lg inline-block">
+          🍕 Order Now
+        </a>
+        <a href="https://www.loumalnatis.com/locations" class="btn-secondary px-10 py-5 rounded-full text-lg inline-block">
+          📍 Find a Location
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-gray-950 text-white pt-14 pb-8 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        <!-- Brand -->
+        <div class="md:col-span-1">
+          <p class="font-display text-2xl font-black text-white mb-2">Lou Malnati's</p>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Chicago's legendary deep dish pizza since 1971. From our family to yours.</p>
+          <div class="flex gap-4">
+            <a href="https://www.instagram.com/loumalnatis" target="_blank" aria-label="Instagram" class="text-gray-500 hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/loumalnatis" target="_blank" aria-label="Facebook" class="text-gray-500 hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+        <!-- Order -->
+        <div>
+          <p class="font-bold text-white uppercase tracking-wide text-sm mb-4">Order</p>
+          <ul class="space-y-2">
+            <li><a href="https://order.loumalnatis.com" class="text-gray-400 hover:text-white transition-colors text-sm">Order Online</a></li>
+            <li><a href="https://www.loumalnatis.com/menu" class="text-gray-400 hover:text-white transition-colors text-sm">Our Menu</a></li>
+            <li><a href="https://www.loumalnatis.com/ship-a-pizza" class="text-gray-400 hover:text-white transition-colors text-sm">Ship a Pizza</a></li>
+            <li><a href="https://www.loumalnatis.com/catering" class="text-gray-400 hover:text-white transition-colors text-sm">Catering</a></li>
+            <li><a href="https://www.loumalnatis.com/reservations" class="text-gray-400 hover:text-white transition-colors text-sm">Reservations</a></li>
+          </ul>
+        </div>
+        <!-- Company -->
+        <div>
+          <p class="font-bold text-white uppercase tracking-wide text-sm mb-4">Company</p>
+          <ul class="space-y-2">
+            <li><a href="https://www.loumalnatis.com/about" class="text-gray-400 hover:text-white transition-colors text-sm">About Lou Malnati's</a></li>
+            <li><a href="https://www.loumalnatis.com/locations" class="text-gray-400 hover:text-white transition-colors text-sm">Locations</a></li>
+            <li><a href="https://www.loumalnatis.com/rewards" class="text-gray-400 hover:text-white transition-colors text-sm">Lou's Rewards</a></li>
+            <li><a href="https://www.loumalnatis.com/fundraising" class="text-gray-400 hover:text-white transition-colors text-sm">Fundraising</a></li>
+            <li><a href="https://www.loumalnatis.com/careers" class="text-gray-400 hover:text-white transition-colors text-sm">Careers</a></li>
+          </ul>
+        </div>
+        <!-- Support -->
+        <div>
+          <p class="font-bold text-white uppercase tracking-wide text-sm mb-4">Support</p>
+          <ul class="space-y-2">
+            <li><a href="https://www.loumalnatis.com/gift-cards" class="text-gray-400 hover:text-white transition-colors text-sm">Gift Cards</a></li>
+            <li><a href="https://www.loumalnatis.com/merchandise" class="text-gray-400 hover:text-white transition-colors text-sm">Merchandise</a></li>
+            <li><a href="https://www.loumalnatis.com/faq" class="text-gray-400 hover:text-white transition-colors text-sm">FAQ</a></li>
+            <li><a href="https://www.loumalnatis.com/allergen-info" class="text-gray-400 hover:text-white transition-colors text-sm">Allergen Info</a></li>
+            <li><a href="https://www.loumalnatis.com/media" class="text-gray-400 hover:text-white transition-colors text-sm">Media & Press</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-gray-600 text-sm">© 2025 Lou Malnati's Pizzeria. All Rights Reserved.</p>
+        <div class="flex gap-6 text-xs text-gray-600">
+          <a href="https://www.loumalnatis.com/terms" class="hover:text-white transition-colors">Terms & Conditions</a>
+          <a href="https://www.loumalnatis.com/privacy" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="https://www.loumalnatis.com/cookies" class="hover:text-white transition-colors">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== MOBILE STICKY ORDER BAR ===== -->
+  <div class="sticky-order md:hidden bg-lou-red px-4 py-3 shadow-2xl">
+    <div class="flex gap-3">
+      <a href="https://order.loumalnatis.com" target="_blank" class="flex-1 bg-white text-lou-red font-black uppercase tracking-wide py-3 rounded-full text-center text-sm">
+        🍕 Order Now
+      </a>
+      <a href="https://www.loumalnatis.com/locations" class="flex-1 bg-transparent border-2 border-white text-white font-bold uppercase tracking-wide py-3 rounded-full text-center text-sm">
+        📍 Locations
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
