@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--
+PAGE STRUCTURE PLAN
+===================
+1. <head> — fonts (Raleway + Open Sans), Tailwind CDN, favicon, OG tags, schema
+2. <nav> — sticky, blurred dark background, logo + CTA button
+3. <section#hero> — full-viewport gradient, headline, sub-headline, dual CTAs
+4. <section#about> — coach intro, credentials, dark bg
+5. <section#services> — 3 service cards on light bg
+6. <section#results> — 3 testimonial cards, dark bg
+7. <section#how> — 3-step process, light bg
+8. <section#contact> — contact form + details, gradient bg
+9. <footer> — links, disclaimer, copyright
+10. Mobile bottom bar — fixed CTA strip
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smaller Shape</title>
+  <meta name="description" content="Smaller Shape offers personalised fitness and business coaching to help you lose weight, build strength, and grow your income — all within a 6-month programme." />
+  <meta property="og:title" content="Smaller Shape — Fitness & Business Coaching" />
+  <meta property="og:description" content="Personalised 6-month fitness and business coaching. Real results, real accountability. Apply today." />
+  <meta property="og:url" content="https://smallershape.com" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Smaller Shape",
+    "url": "https://smallershape.com",
+    "telephone": "",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "description": "Fitness and business coaching services offering 6-month programmes to help clients achieve their fitness and income goals."
+  }
+  </script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
+      color: #1a1a2e;
+    }
+    h1, h2, h3, h4, h5, h6, .font-heading {
+      font-family: 'Raleway', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+
+    /* Nav */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(10, 10, 30, 0.75);
+    }
+
+    /* Hero */
+    .hero-section {
+      min-height: 100vh;
+      min-height: 100svh;
+      background: linear-gradient(135deg, #0a0a1e 0%, #1a0533 30%, #2d0a5e 60%, #0f2027 100%);
+      display: flex;
+      align-items: center;
+    }
+
+    /* Services */
+    .services-section {
+      background: linear-gradient(160deg, #f0f4ff 0%, #e8eaf6 50%, #f5f0ff 100%);
+    }
+
+    /* About */
+    .about-section {
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    }
+
+    /* Results */
+    .results-section {
+      background: linear-gradient(160deg, #1a0533 0%, #2d0a5e 50%, #0f0c29 100%);
+    }
+
+    /* How it works */
+    .how-section {
+      background: linear-gradient(160deg, #f5f0ff 0%, #eef2ff 50%, #f0f9ff 100%);
+    }
+
+    /* CTA / Contact */
+    .contact-section {
+      background: linear-gradient(135deg, #2d0a5e 0%, #1a0533 40%, #0a0a1e 100%);
+    }
+
+    /* Footer */
+    .footer-section {
+      background: linear-gradient(180deg, #0a0a1e 0%, #050510 100%);
+    }
+
+    /* Card hover */
+    .service-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(45, 10, 94, 0.25);
+    }
+
+    /* Input styles */
+    .form-input {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 12px 16px;
+      width: 100%;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus {
+      border-color: rgba(167, 139, 250, 0.8);
+    }
+    .form-input::placeholder {
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Bottom mobile bar */
+    .mobile-bar {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(10,10,30,0.95);
+      backdrop-filter: blur(8px);
+      padding: 12px 16px;
+      gap: 10px;
+      border-top: 1px solid rgba(167,139,250,0.3);
+    }
+    @media (min-width: 768px) {
+      .mobile-bar { display: none; }
+    }
+
+    /* Accent colour helpers */
+    .accent-purple { color: #a78bfa; }
+    .accent-green { color: #6ee7b7; }
+    .bg-accent-purple { background-color: #7c3aed; }
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #9d4edd);
+      color: #ffffff;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      border-radius: 50px;
+      padding: 14px 32px;
+      font-size: 16px;
+      display: inline-block;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+      min-height: 48px;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: scale(1.03);
+    }
+    .btn-outline {
+      border: 2px solid #a78bfa;
+      color: #a78bfa;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 700;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-size: 16px;
+      display: inline-block;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      min-height: 48px;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: rgba(167,139,250,0.15);
+    }
+
+    .step-number {
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, #7c3aed, #9d4edd);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(167,139,250,0.2);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .star { color: #fbbf24; font-size: 18px; }
+  </style>
+</head>
+<body>
+
+<!-- ============ STICKY NAV ============ -->
+<nav class="sticky-nav">
+  <div style="max-width:1200px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between;">
+    <a href="#hero" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
+      <span style="font-size:26px;">💪</span>
+      <span style="font-family:'Raleway',sans-serif; font-weight:800; font-size:20px; color:#ffffff; letter-spacing:-0.5px;">Smaller Shape</span>
+    </a>
+    <div style="display:flex; align-items:center; gap:20px;">
+      <a href="#services" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:15px; font-weight:600; display:none;" class="md:block">Services</a>
+      <a href="#about" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:15px; font-weight:600; display:none;" class="md:block">About</a>
+      <a href="#results" style="color:rgba(255,255,255,0.75); text-decoration:none; font-size:15px; font-weight:600; display:none;" class="md:block">Results</a>
+      <a href="#contact" class="btn-primary" style="padding:10px 22px; font-size:15px;">Apply Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="hero-section">
+  <div style="max-width:1100px; margin:0 auto; padding:80px 24px 100px; text-align:center;">
+    <span style="display:inline-block; background:rgba(167,139,250,0.15); border:1px solid rgba(167,139,250,0.4); color:#a78bfa; font-family:'Raleway',sans-serif; font-weight:700; font-size:13px; letter-spacing:2px; text-transform:uppercase; border-radius:50px; padding:6px 18px; margin-bottom:28px;">Fitness &amp; Business Coaching</span>
+    <h1 style="font-family:'Raleway',sans-serif; font-weight:900; font-size:clamp(36px,6vw,72px); line-height:1.1; color:#ffffff; margin-bottom:24px; letter-spacing:-1px;">
+      Transform Your Body.<br/>
+      <span class="accent-purple">Build Your Income.</span><br/>
+      Do Both at Once.
+    </h1>
+    <p style="font-size:clamp(17px,2vw,20px); color:rgba(255,255,255,0.72); max-width:640px; margin:0 auto 40px; line-height:1.7;">
+      Smaller Shape is a 6-month coaching programme that helps you lose weight, build real strength, and grow a business — with one dedicated coach by your side the entire way.
+    </p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-bottom:56px;">
+      <a href="#contact" class="btn-primary" style="font-size:18px; padding:16px 38px;">Apply for the 6-Month Programme</a>
+      <a href="#services" class="btn-outline" style="font-size:18px; padding:16px 38px;">See What's Included</a>
+    </div>
+    <!-- Trust bar -->
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:32px; border-top:1px solid rgba(255,255,255,0.12); padding-top:36px;">
+      <div style="text-align:center;">
+        <p style="font-family:'Raleway',sans-serif; font-weight:800; font-size:28px; color:#a78bfa; margin:0;">6 Months</p>
+        <p style="color:rgba(255,255,255,0.55); font-size:14px; margin:4px 0 0;">Full coaching included</p>
+      </div>
+      <div style="text-align:center;">
+        <p style="font-family:'Raleway',sans-serif; font-weight:800; font-size:28px; color:#6ee7b7; margin:0;">2-in-1</p>
+        <p style="color:rgba(255,255,255,0.55); font-size:14px; margin:4px 0 0;">Fitness &amp; business in one plan</p>
+      </div>
+      <div style="text-align:center;">
+        <p style="font-family:'Raleway',sans-serif; font-weight:800; font-size:28px; color:#a78bfa; margin:0;">1-on-1</p>
+        <p style="color:rgba(255,255,255,0.55); font-size:14px; margin:4px 0 0;">Personalised to you</p>
+      </div>
+      <div style="text-align:center;">
+        <p style="font-family:'Raleway',sans-serif; font-weight:800; font-size:28px; color:#6ee7b7; margin:0;">100%</p>
+        <p style="color:rgba(255,255,255,0.55); font-size:14px; margin:4px 0 0;">Not MLM or network marketing</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="about-section">
+  <div style="max-width:1100px; margin:0 auto; padding:80px 24px;">
+    <div style="display:grid; grid-template-columns:1fr; gap:48px; align-items:center;">
+      <div style="max-width:700px; margin:0 auto; text-align:center;">
+        <span style="display:inline-block; background:rgba(110,231,183,0.12); border:1px solid rgba(110,231,183,0.3); color:#6ee7b7; font-family:'Raleway',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; border-radius:50px; padding:5px 16px; margin-bottom:20px;">Your Coach</span>
+        <h2 style="font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(28px,4vw,44px); color:#ffffff; margin-bottom:20px; line-height:1.2;">Real Coaching. Genuine Accountability.</h2>
+        <p style="color:rgba(255,255,255,0.72); font-size:17px; line-height:1.8; margin-bottom:20px;">
+          At Smaller Shape, the coaching model is built on one belief: you cannot separate how you feel physically from how you perform professionally. When your body is stronger, your focus sharpens, your confidence rises, and your business moves faster.
+        </p>
+        <p style="color:rgba(255,255,255,0.72); font-size:17px; line-height:1.8; margin-bottom:32px;">
+          The 6-month programme combines structured fitness training with practical business strategy — not a generic plan dropped in a Facebook group, but a real working relationship where your coach learns your life, your goals, and your obstacles.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;">
+          <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(167,139,250,0.2); border-radius:12px; padding:16px 24px; text-align:center;">
+            <p style="font-family:'Raleway',sans-serif; font-weight:800; font-size:22px; color:#a78bfa; margin:0;">Fitness</p>
+            <p style="color:rgba(255,255,255,0.55); font-size:13px; margin:4px 0 0;">Training &amp; nutrition</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(110,231,183,0.2); border-radius:12px; padding:16px 24px; text-align:center;">
+            <p style="font-family:'Raleway',sans-serif; font-weight:800; font-size:22px; color:#6ee7b7; margin:0;">Business</p>
+            <p style="color:rgba(255,255,255,0.55); font-size:13px; margin:4px 0 0;">Strategy &amp; growth</p>
+          </div>
+          <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(167,139,250,0.2); border-radius:12px; padding:16px 24px; text-align:center;">
+            <p style="font-family:'Raleway',sans-serif; font-weight:800; font-size:22px; color:#a78bfa; margin:0;">Mindset</p>
+            <p style="color:rgba(255,255,255,0.55); font-size:13px; margin:4px 0 0;">Habits &amp; accountability</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="services-section">
+  <div style="max-width:1100px; margin:0 auto; padding:80px 24px;">
+    <div style="text-align:center; margin-bottom:56px;">
+      <span style="display:inline-block; background:rgba(124,58,237,0.1); border:1px solid rgba(124,58,237,0.25); color:#7c3aed; font-family:'Raleway',sans-serif; font-weight:700; font-size:12px; letter-spacing:2px; text-transform:uppercase; border-radius:50px; padding:5px 16px; margin-bottom:16px;">What's Included</span>
+      <h2 style="font-family:'Raleway',sans-serif; font-weight:800; font-size:clamp(26px,4vw,42px); color:#1a1a2e; margin-bottom:16
