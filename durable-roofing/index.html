@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Durable Roofing</title>
+<meta name="description" content="Since 1917, Durable Roofing has been Chicago's most trusted commercial, industrial, and multi-unit roofing contractor. Free estimates. 5-year workmanship guarantee.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --primary: #1c1917;
+    --accent: #f97316;
+    --surface: rgba(255,255,255,0.07);
+    --accent-rgb: 249,115,22;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Roboto', sans-serif; font-size: 16px; color: #1c1917; margin: 0; padding: 0; }
+  h1, h2, h3, h4, h5 { font-family: 'Oswald', sans-serif; }
+
+  /* NAV */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(28,25,23,0.92);
+    border-bottom: 1px solid rgba(249,115,22,0.2);
+  }
+
+  /* HERO */
+  .hero-section {
+    min-height: 100vh;
+    min-height: 100svh;
+    background:
+      radial-gradient(ellipse at 80% 10%, rgba(249,115,22,0.22) 0%, transparent 55%),
+      linear-gradient(160deg, rgba(28,25,23,0.95) 0%, rgba(28,25,23,0.75) 50%, rgba(28,25,23,0.88) 100%),
+      url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+  }
+
+  /* STATS STRIP */
+  .stats-strip {
+    background: linear-gradient(90deg, #f97316 0%, #ea580c 100%);
+  }
+
+  /* SERVICES SECTION */
+  .services-section {
+    background: linear-gradient(175deg, #1c1917 0%, #292524 60%, #1c1917 100%);
+  }
+
+  /* GLASS CARD */
+  .glass-card {
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.30);
+  }
+
+  /* WHY US SECTION */
+  .why-section {
+    background: linear-gradient(135deg, #f5f0eb 0%, #ede8e3 100%);
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section {
+    background: linear-gradient(160deg, #292524 0%, #1c1917 100%);
+  }
+
+  .testimonial-card {
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.30);
+  }
+
+  /* PROCESS */
+  .process-section {
+    background: linear-gradient(135deg, #f5f0eb 0%, #faf7f4 100%);
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: linear-gradient(135deg, #1c1917 0%, #0d0b0a 100%);
+  }
+
+  /* FOOTER */
+  .footer {
+    background: #0d0b0a;
+    border-top: 1px solid rgba(249,115,22,0.3);
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    background: #f97316;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 6px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    border: 2px solid #f97316;
+    min-height: 52px;
+    font-size: 1rem;
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 0 28px rgba(249,115,22,0.55);
+    background: #ea580c;
+    border-color: #ea580c;
+  }
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 6px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    border: 2px solid rgba(255,255,255,0.6);
+    min-height: 52px;
+    font-size: 1rem;
+  }
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #fff;
+    transform: translateY(-2px);
+  }
+
+  /* MOBILE BOTTOM BAR */
+  .mobile-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px;
+    background: rgba(28,25,23,0.97);
+    border-top: 1px solid rgba(249,115,22,0.4);
+  }
+  @media(min-width: 768px) {
+    .mobile-bar { display: none; }
+  }
+  .mobile-bar a {
+    flex: 1;
+    text-align: center;
+    padding: 12px 8px;
+    border-radius: 6px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-bar .call-btn {
+    background: #f97316;
+    color: #fff;
+    border: 2px solid #f97316;
+  }
+  .mobile-bar .estimate-btn {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.5);
+  }
+
+  /* MOBILE PADDING FOR BOTTOM BAR */
+  @media(max-width: 767px) {
+    body { padding-bottom: 80px; }
+  }
+
+  /* NAV TOGGLE */
+  .nav-menu { display: flex; }
+  @media(max-width: 767px) {
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      padding: 12px 0;
+    }
+    .nav-menu.open { display: flex; }
+  }
+
+  /* STAR RATING */
+  .stars { color: #f97316; font-size: 1.1rem; letter-spacing: 2px; }
+
+  /* ACCENT LINE */
+  .accent-line {
+    width: 56px;
+    height: 4px;
+    background: #f97316;
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  /* SERVICE ICON BOX */
+  .icon-box {
+    width: 52px;
+    height: 52px;
+    background: rgba(249,115,22,0.15);
+    border: 1px solid rgba(249,115,22,0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  /* PROCESS STEP */
+  .step-number {
+    width: 52px;
+    height: 52px;
+    background: #f97316;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* WHY CARD */
+  .why-card {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(28,25,23,0.08);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .why-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid rgba(28,25,23,0.12);
+  }
+
+  input, textarea, select {
+    min-height: 48px;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div style="max-width:1200px;margin:0 auto;padding:0 24px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;height:68px;">
+      <!-- LOGO -->
+      <div style="display:flex;flex-direction:column;">
+        <span style="font-family:'Oswald',sans-serif;font-weight:700;font-size:1.35rem;color:#fff;letter-spacing:0.06em;line-height:1;">DURABLE ROOFING</span>
+        <span style="font-size:0.72rem;color:#f97316;letter-spacing:0.12em;font-family:'Roboto',sans-serif;font-weight:500;text-transform:uppercase;">Since 1917 · Chicago</span>
+      </div>
+
+      <!-- DESKTOP NAV -->
+      <div class="nav-menu" style="gap:28px;align-items:center;">
+        <a href="#services" style="color:rgba(255,255,255,0.85);font-family:'Oswald',sans-serif;font-weight:500;font-size:0.95rem;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.3s ease;">Services</a>
+        <a href="#why" style="color:rgba(255,255,255,0.85);font-family:'Oswald',sans-serif;font-weight:500;font-size:0.95rem;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.3s ease;">Why Us</a>
+        <a href="#storm" style="color:rgba(255,255,255,0.85);font-family:'Oswald',sans-serif;font-weight:500;font-size:0.95rem;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.3s ease;">Storm Damage</a>
+        <a href="#faq" style="color:rgba(255,255,255,0.85);font-family:'Oswald',sans-serif;font-weight:500;font-size:0.95rem;text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;transition:color 0.3s ease;">FAQ</a>
+        <a href="tel:7083717663" style="color:#f97316;font-family:'Oswald',sans-serif;font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:0.04em;transition:color 0.3s ease;">708-371-7663</a>
+        <a href="#contact" class="btn-primary" style="padding:10px 22px;font-size:0.88rem;min-height:44px;">Free Estimate</a>
+      </div>
+
+      <!-- MOBILE HAMBURGER -->
+      <button id="navToggle" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:8px;display:none;" class="md:hidden">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect y="5" width="28" height="2.5" rx="1.25" fill="white"/>
+          <rect y="12.75" width="28" height="2.5" rx="1.25" fill="white"/>
+          <rect y="20.5" width="28" height="2.5" rx="1.25" fill="white"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<style>
+@media(max-width:767px){
+  #navToggle { display:block !important; }
+  nav .nav-menu { position:absolute; top:68px; left:0; right:0; background:rgba(28,25,23,0.97); padding:16px 24px 24px; gap:12px !important; border-bottom:1px solid rgba(249,115,22,0.2); }
+  nav .nav-menu a { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+}
+</style>
+
+<script>
+(function(){
+  var btn = document.getElementById('navToggle');
+  var menu = document.querySelector('.nav-menu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      if(menu.classList.contains('open')){ menu.classList.remove('open'); }
+      else { menu.classList.add('open'); }
+    });
+  }
+})();
+</script>
+
+<!-- HERO SECTION -->
+<section class="hero-section">
+  <div style="max-width:1200px;margin:0 auto;padding:80px 24px;width:100%;">
+    <div style="max-width:680px;">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.35);border-radius:100px;padding:6px 16px;margin-bottom:24px;">
+        <span style="width:8px;height:8px;background:#f97316;border-radius:50%;display:inline-block;"></span>
+        <span style="font-family:'Roboto',sans-serif;font-size:0.82rem;color:#f97316;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;">Chicagoland's Trusted Roofers Since 1917</span>
+      </div>
+
+      <h1 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(2.4rem,5.5vw,4rem);color:#fff;line-height:1.1;margin:0 0 24px;letter-spacing:0.02em;">
+        Chicago's Commercial<br>
+        <span style="color:#f97316;">Roofing Specialists</span><br>
+        For Over 100 Years
+      </h1>
+
+      <p style="font-family:'Roboto',sans-serif;font-size:1.1rem;color:rgba(255,255,255,0.8);line-height:1.7;margin:0 0 36px;max-width:560px;">
+        Licensed, bonded, and insured. Durable Roofing delivers long-lasting commercial, industrial, and multi-unit roofing solutions across the Chicago area — backed by a 5-year workmanship guarantee and 30-year material warranties.
+      </p>
+
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+        <a href="#contact" class="btn-primary" style="font-size:1rem;">Get Your Free Estimate</a>
+        <a href="tel:7083717663" class="btn-outline" style="font-size:1rem;">
+          <svg style="width:18px;height:18px;margin-right:8px;vertical-align:middle;" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+          708-371-7663
+        </a>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:44px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="color:#f97316;font-size:1.2rem;">✓</span>
+          <span style="color:rgba(255,255,255,0.75);font-size:0.9rem;font-family:'Roboto',sans-serif;">5-Year Workmanship Guarantee</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="color:#f97316;font-size:1.2rem;">✓</span>
+          <span style="color:rgba(255,255,255,0.75);font-size:0.9rem;font-family:'Roboto',sans-serif;">30-Year Material Warranty</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="color:#f97316;font-size:1.2rem;">✓</span>
+          <span style="color:rgba(255,255,255,0.75);font-size:0.9rem;font-family:'Roboto',sans-serif;">Free Estimates &amp; Evaluations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<section class="stats-strip" style="padding:32px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:2.2rem;color:#fff;line-height:1;">100+</div>
+        <div style="font-family:'Roboto',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.85);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Years in Business</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:2.2rem;color:#fff;line-height:1;">5 Year</div>
+        <div style="font-family:'Roboto',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.85);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Workmanship Guarantee</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:2.2rem;color:#fff;line-height:1;">30 Year</div>
+        <div style="font-family:'Roboto',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.85);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Materials Warranty</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:2.2rem;color:#fff;line-height:1;">Free</div>
+        <div style="font-family:'Roboto',sans-serif;font-size:0.85rem;color:rgba(255,255,255,0.85);margin-top:4px;text-transform:uppercase;letter-spacing:0.06em;">Estimates &amp; Evaluations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@media(min-width:640px){
+  .stats-strip .stats-grid { grid-template-columns: repeat(4,1fr) !important; }
+}
+</style>
+
+<!-- SERVICES SECTION -->
+<section id="services" class="services-section" style="padding:96px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:60px;">
+      <div class="accent-line" style="margin:0 auto 16px;"></div>
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;margin:0 0 16px;">Our Roofing Services</h2>
+      <p style="font-family:'Roboto',sans-serif;font-size:1rem;color:rgba(255,255,255,0.65);max-width:560px;margin:0 auto;line-height:1.7;">
+        From flat roof TPO replacements to full industrial re-roofing projects — Durable Roofing handles every scope across the Chicago metro area.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr;gap:24px;">
+
+      <!-- Card 1 -->
+      <div class="glass-card" style="padding:32px;">
+        <div class="icon-box">
+          <svg width="26" height="26" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9.5L12 4l9 5.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+        </div>
+        <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:1.4rem;color:#fff;margin:0 0 10px;">Commercial &amp; Industrial Roofing</h3>
+        <p style="font-family:'Roboto',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.7;margin:0 0 16px;">
+          Repairs, replacements, restorations, and new construction installations for commercial and industrial properties. Over 100 years of Chicago roofing experience means we've handled every roof type — flat, steep slope, metal, and more.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Flat Roofs</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">TPO / PVC / EPDM</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Metal Roofing</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">New Construction</span>
+        </div>
+        <a href="#contact" style="color:#f97316;font-family:'Oswald',sans-serif;font-weight:600;font-size:0.95rem;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.3s ease;">Get a Quote →</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-card" style="padding:32px;">
+        <div class="icon-box">
+          <svg width="26" height="26" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:1.4rem;color:#fff;margin:0 0 10px;">Multi-Unit &amp; Condo Roofing</h3>
+        <p style="font-family:'Roboto',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.7;margin:0 0 16px;">
+          Roof repairs and replacements for multifamily buildings, condos, and HOAs. We work directly with property managers and building owners — scheduling work to minimize tenant disruption while maintaining the highest quality standards.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Condos</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Apartment Buildings</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">HOA Properties</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Restorations</span>
+        </div>
+        <a href="#contact" style="color:#f97316;font-family:'Oswald',sans-serif;font-weight:600;font-size:0.95rem;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.3s ease;">Get a Quote →</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-card" style="padding:32px;">
+        <div class="icon-box">
+          <svg width="26" height="26" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:1.4rem;color:#fff;margin:0 0 10px;">Roof Maintenance Plans</h3>
+        <p style="font-family:'Roboto',sans-serif;font-size:0.95rem;color:rgba(255,255,255,0.7);line-height:1.7;margin:0 0 16px;">
+          Preventative maintenance programs that extend the lifespan of your roofing system. Includes scheduled inspections, certifications for insurance claims, and priority emergency response for plan members.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Inspections</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Fluid Coatings</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Insurance Certs</span>
+          <span style="background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:#f97316;font-size:0.78rem;padding:4px 10px;border-radius:100px;font-family:'Roboto',sans-serif;">Priority Emergency</span>
+        </div>
+        <a href="#contact" style="color:#f97316;font-family:'Oswald',sans-serif;font-weight:600;font-size:0.95rem;text-decoration:none;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.3s ease;">Learn More →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+@media(min-width:640px){
+  #services .services-grid { grid-template-columns: repeat(2,1fr) !important; }
+}
+@media(min-width:1024px){
+  #services .services-grid { grid-template-columns: repeat(3,1fr) !important; }
+}
+</style>
+
+<!-- WHY US SECTION -->
+<section id="why" class="why-section" style="padding:96px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:60px;">
+      <div class="accent-line" style="margin:0 auto 16px;"></div>
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#1c1917;margin:0 0 16px;">What Sets Durable Roofing Apart</h2>
+      <p style="font-family:'Roboto',sans-serif;font-size:1rem;color:#57534e;max-width:560px;margin:0 auto;line-height:1.7;">
+        More than a century of Chicago roofing work has shaped how we operate — every project, every time.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr;gap:24px;">
+
+      <div class="why-card" style="padding:32px;">
+        <div style="width:48px;height:48px;background:#fff7ed;border:1px solid rgba(249,115,22,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="24" height="24" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:1.25rem;color:#1c1917;margin:0 0 10px;">100+ Years of Experience</h3>
+        <p style="font-family:'Roboto',sans-serif;font-size:0.95rem;color:#57534e;line-height:1.7;margin:0;">
+          Our team brings hundreds of years of combined roofer experience. Since 1917, Durable Roofing has handled every roof type Chicago weather can challenge — brutal winters, spring storms, and summer heat cycles included.
+        </p>
+      </div>
+
+      <div class="why-card" style="padding:32px;">
+        <div style="width:48px;height:48px;background:#fff7ed;border:1px solid rgba(249,115,22,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="24" height="24" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:1.25rem;color:#1c1917;margin:0 0 10px;">Certified, Guaranteed &amp; Warrantied</h3>
+        <p style="font-family:'Roboto',sans-serif;font-size:0.95rem;color:#57534e;line-height:1.7;margin:0;">
+          We're certified installers for the most trusted brands in the industry. Every project is backed by manufacturer product warranties up to 30 years, plus our own 5-year workmanship guarantee — no fine print.
+        </p>
+      </div>
+
+      <div class="why-card" style="padding:32px;">
+        <div style="width:48px;height:48px;background:#fff7ed;border:1px solid rgba(249,115,22,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="24" height="24" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:1.25rem;color:#1c1917;margin:0 0 10px;">Quick Response Times</h3>
+        <p style="font-family:'Roboto',sans-serif;font-size:0.95rem;color:#57534e;line-height:1.7;margin:0;">
+          When your roof fails, every hour matters. Expect fast callbacks and rapid on-site response from our team. Maintenance program members receive priority emergency service — moving to the front of the line when it counts most.
+        </p>
+      </div>
+
+      <div class="why-card" style="padding:32px;">
+        <div style="width:48px;height:48px;background:#fff7ed;border:1px solid rgba(249,115,22,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
+          <svg width="24" height="24" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 style="font-family:'Oswald',sans-serif;font-weight:600;font-size:1.25rem;color:#1c1917;margin:0 0 10px;">Locally Owned &amp; Operated</h3>
+        <p style="font-family:'Roboto',sans-serif;font-size:0.95rem;color:#57534e;line-height:1.7;margin:0;">
+          We're not a national franchise. Durable Roofing is a Chicago-area company, locally owned since 1917. We know this city's buildings, its weather patterns, and what it takes to build roofing systems that last decades here.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" style="padding:96px 24px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:60px;">
+      <div class="accent-line" style="margin:0 auto 16px;"></div>
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(1.8rem,3.5vw,2.8rem);color:#fff;margin:0 0 16px;">What Chicago Property Owners Say</h2>
+      <p style="font-family:'Roboto',sans-serif;font-size:1rem;color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto;">A century-old reputation built one roof at a time.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr;gap:24px;">
+
+      <div class="testimonial-card" style="padding:32px;">
+        <div class="stars" style="margin-bottom:14px;">★★★★★</div>
+        <p style="font-family:'Roboto',sans-serif;font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.75;margin:0 0 20px;font-style:italic;">
+          "Durable Roofing replaced the flat roof on our 24-unit building in Oak Park. Zero complaints from tenants — they finished on schedule and the clean-up was spotless. Three years on and not a single issue."
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <div style="width:42px;height:42px;background:rgba(249,115,22,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+            <span style="font-family:'Oswald',sans-serif;font-weight:700;color:#f97316;font-size:1rem;">MK</span>
+          </div>
+          <div>
+            <div style="font-family:'Oswald',sans-serif;font-weight:
