@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G & G Law</title>
+  <meta name="description" content="Chicago small business lawyers serving neighborhoods and suburbs. LLCs, contracts, trademarks, employment, M&A, and outside general counsel. Transparent fees since 2011." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --accent: #b8960c;
+      --accent-light: #d4af37;
+      --surface: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; font-size: 16px; color: #0f172a; background: #0f172a; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+    /* NAV */
+    .nav-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(15,23,42,0.88);
+      border-bottom: 1px solid rgba(184,150,12,0.25);
+    }
+    .nav-link {
+      color: rgba(255,255,255,0.82);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-link:hover { color: #d4af37; }
+    .btn-primary {
+      background: linear-gradient(135deg, #b8960c, #d4af37);
+      color: #0f172a;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 0 28px rgba(184,150,12,0.55);
+    }
+    .btn-outline {
+      border: 2px solid #d4af37;
+      color: #d4af37;
+      background: transparent;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 0.65rem 1.4rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: rgba(184,150,12,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* HERO */
+    .hero-section {
+      position: relative;
+      min-height: 100svh;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(15,23,42,0.93) 0%, rgba(15,23,42,0.75) 50%, rgba(15,23,42,0.88) 100%),
+        url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80') center center / cover no-repeat;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(184,150,12,0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* GLASS CARD */
+    .glass-card {
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.30);
+    }
+    .glass-card-light {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(15,23,42,0.10);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .glass-card-light:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.16);
+    }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      background: linear-gradient(90deg, #b8960c 0%, #d4af37 50%, #b8960c 100%);
+    }
+
+    /* SERVICES SECTION */
+    .services-section {
+      background: linear-gradient(160deg, #111827 0%, #1e293b 50%, #0f172a 100%);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(184,150,12,0.25), rgba(212,175,55,0.10));
+      border: 1px solid rgba(184,150,12,0.4);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    /* ABOUT SECTION */
+    .about-section {
+      background: linear-gradient(135deg, #f8f5f0 0%, #f0ece3 100%);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section {
+      background: linear-gradient(160deg, #0f172a 0%, #1e293b 100%);
+    }
+
+    /* BLOG */
+    .blog-section {
+      background: linear-gradient(135deg, #f8f5f0 0%, #ede9df 100%);
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, #0f172a 0%, #060c18 100%);
+    }
+
+    /* CONTACT FORM */
+    .contact-section {
+      background: linear-gradient(160deg, #111827 0%, #1e293b 50%, #0f172a 100%);
+    }
+    .form-input {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: #fff;
+      padding: 0.8rem 1rem;
+      width: 100%;
+      font-family: 'Lato', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+      outline: none;
+    }
+    .form-input:focus {
+      border-color: #d4af37;
+      background: rgba(255,255,255,0.10);
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.4); }
+
+    /* FOOTER */
+    footer {
+      background: #060c18;
+      border-top: 1px solid rgba(184,150,12,0.2);
+    }
+
+    /* MOBILE BOTTOM BAR */
+    .mobile-action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: rgba(15,23,42,0.97);
+      border-top: 1px solid rgba(184,150,12,0.3);
+    }
+    @media(min-width: 768px) {
+      .mobile-action-bar { display: none; }
+    }
+
+    .accent-text { color: #d4af37; }
+    .divider-gold {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #b8960c, #d4af37);
+      border-radius: 2px;
+    }
+
+    /* hamburger */
+    .mobile-menu { display: none; }
+    .mobile-menu.open { display: flex; }
+    @media(max-width: 767px) {
+      .desktop-nav { display: none; }
+    }
+    @media(min-width: 768px) {
+      .hamburger-btn { display: none; }
+    }
+
+    .section-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #d4af37;
+    }
+  </style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<header class="nav-sticky">
+  <nav style="max-width:1200px; margin:0 auto; padding:0 1.5rem; display:flex; align-items:center; justify-content:space-between; height:68px;">
+    <a href="/" style="text-decoration:none; display:flex; align-items:center; gap:0.5rem;">
+      <span style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#fff; letter-spacing:0.02em;">G <span style="color:#d4af37;">&amp;</span> G Law</span>
+      <span style="font-size:0.65rem; color:rgba(255,255,255,0.5); font-family:'Lato',sans-serif; letter-spacing:0.05em; margin-top:2px;">LLC®</span>
+    </a>
+    <div class="desktop-nav" style="display:flex; align-items:center; gap:2rem;">
+      <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#testimonials" class="nav-link">Clients</a>
+      <a href="#blog" class="nav-link">Blog</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="tel:+13125555555" class="btn-primary" style="font-size:0.8rem; padding:0.55rem 1.1rem;">Schedule a Free Call</a>
+    </div>
+    <button class="hamburger-btn" onclick="document.getElementById('mobileMenu').classList.toggle('open')" style="background:none; border:none; cursor:pointer; padding:0.5rem;">
+      <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#fff" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </nav>
+  <div id="mobileMenu" class="mobile-menu" style="flex-direction:column; background:rgba(15,23,42,0.98); padding:1rem 1.5rem 1.5rem; border-top:1px solid rgba(184,150,12,0.2); gap:0.25rem;">
+    <a href="#about" class="nav-link" style="padding:0.7rem 0; display:block; border-bottom:1px solid rgba(255,255,255,0.07);">About</a>
+    <a href="#services" class="nav-link" style="padding:0.7rem 0; display:block; border-bottom:1px solid rgba(255,255,255,0.07);">Services</a>
+    <a href="#testimonials" class="nav-link" style="padding:0.7rem 0; display:block; border-bottom:1px solid rgba(255,255,255,0.07);">Clients</a>
+    <a href="#blog" class="nav-link" style="padding:0.7rem 0; display:block; border-bottom:1px solid rgba(255,255,255,0.07);">Blog</a>
+    <a href="#contact" class="nav-link" style="padding:0.7rem 0; display:block;">Contact</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-glow"></div>
+  <div style="max-width:1200px; margin:0 auto; padding:6rem 1.5rem 8rem; position:relative; z-index:2; width:100%;">
+    <div style="max-width:700px;">
+      <p class="section-label" style="margin-bottom:1.25rem;">Chicago Small Business Lawyers</p>
+      <h1 style="font-family:'Playfair Display',serif; font-size:clamp(2.4rem,5vw,3.8rem); font-weight:700; color:#fff; line-height:1.15; margin-bottom:1.5rem;">
+        Legal counsel that works <em style="color:#d4af37; font-style:italic;">for</em> your business, not against your budget.
+      </h1>
+      <p style="font-size:1.15rem; color:rgba(255,255,255,0.78); line-height:1.7; margin-bottom:2.25rem; max-width:560px;">
+        G & G Law has served Chicago's small business owners since 2011 — from first-time founders forming an LLC to established companies closing million-dollar deals. Responsive attorneys. Transparent, flat fees. No surprises.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+        <a href="#contact" class="btn-primary" style="font-size:1rem; padding:0.9rem 2rem;">Schedule a Free Call</a>
+        <a href="#services" class="btn-outline" style="font-size:1rem; padding:0.9rem 2rem;">See Our Services</a>
+      </div>
+      <div style="margin-top:2.5rem; display:flex; flex-wrap:wrap; gap:2rem;">
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span style="color:rgba(255,255,255,0.75); font-size:0.9rem;">Founded 2011</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span style="color:rgba(255,255,255,0.75); font-size:0.9rem;">Chicago Neighborhoods &amp; Suburbs</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#d4af37"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span style="color:rgba(255,255,255,0.75); font-size:0.9rem;">Transparent Flat Fees</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip" style="padding:1.1rem 1.5rem;">
+  <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:2rem;">
+    <span style="font-family:'Lato',sans-serif; font-weight:700; font-size:0.85rem; color:#0f172a; letter-spacing:0.06em; text-transform:uppercase;">14+ Years Serving Chicago Small Businesses</span>
+    <span style="width:1px; height:20px; background:rgba(15,23,42,0.25); display:none;" class="desktop-divider"></span>
+    <span style="font-family:'Lato',sans-serif; font-weight:700; font-size:0.85rem; color:#0f172a; letter-spacing:0.06em; text-transform:uppercase;">LLCs · Contracts · M&amp;A · Trademarks · Employment</span>
+    <span style="font-family:'Lato',sans-serif; font-weight:700; font-size:0.85rem; color:#0f172a; letter-spacing:0.06em; text-transform:uppercase;">Startups to Multi-Million Dollar Companies</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="services-section" style="padding:6rem 1.5rem;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p class="section-label" style="margin-bottom:0.75rem;">What We Handle</p>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,2.8rem); font-weight:700; color:#fff; margin-bottom:1rem;">Legal Services for Small Businesses</h2>
+      <p style="color:rgba(255,255,255,0.65); font-size:1.05rem; max-width:560px; margin:0 auto; line-height:1.7;">From your first formation to your eventual exit, G & G Law covers every stage of your business's legal journey.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem;">
+
+      <!-- Card 1 -->
+      <div class="glass-card" style="padding:2rem;">
+        <div class="service-icon" style="margin-bottom:1.25rem;">🏢</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:0.75rem;">Business Formation</h3>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.95rem; line-height:1.65;">LLC and PLLC formations, operating agreements, partnership agreements, and step-by-step guidance for new business owners.</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="glass-card" style="padding:2rem;">
+        <div class="service-icon" style="margin-bottom:1.25rem;">📄</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:0.75rem;">Contracts &amp; Agreements</h3>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.95rem; line-height:1.65;">Master services agreements, vendor contracts, non-compete agreements, commercial leases — drafted to protect your business and close faster.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-card" style="padding:2rem;">
+        <div class="service-icon" style="margin-bottom:1.25rem;">💼</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:0.75rem;">Outside General Counsel</h3>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.95rem; line-height:1.65;">Our Outside General Counsel Package gives established businesses on-call legal support without the overhead of an in-house attorney.</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="glass-card" style="padding:2rem;">
+        <div class="service-icon" style="margin-bottom:1.25rem;">🔏</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:0.75rem;">Trademarks &amp; IP</h3>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.95rem; line-height:1.65;">Trademark registration and intellectual property strategy to protect your brand name, logo, and creative assets.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="glass-card" style="padding:2rem;">
+        <div class="service-icon" style="margin-bottom:1.25rem;">👥</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:0.75rem;">Employment Law</h3>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.95rem; line-height:1.65;">Employment agreements, HR policy reviews, investor and equity matters — keeping you compliant as your team grows.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="glass-card" style="padding:2rem;">
+        <div class="service-icon" style="margin-bottom:1.25rem;">🤝</div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#fff; margin-bottom:0.75rem;">M&amp;A &amp; Business Sales</h3>
+        <p style="color:rgba(255,255,255,0.65); font-size:0.95rem; line-height:1.65;">Buying or selling a business? We handle asset and stock purchase transactions, due diligence, and deal structuring from letter of intent to close.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section" style="padding:6rem 1.5rem;">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+    <div>
+      <p class="section-label" style="margin-bottom:0.75rem; color:#b8960c;">Who We Are</p>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:#0f172a; margin-bottom:1.25rem; line-height:1.2;">An attorney who also runs a business — and knows what that costs.</h2>
+      <div class="divider-gold" style="margin-bottom:1.5rem;"></div>
+      <p style="color:#374151; font-size:1.05rem; line-height:1.75; margin-bottom:1.25rem;">
+        Michelle Green founded G & G Law in 2011 with a single mission: make quality legal services genuinely accessible for small businesses. She's not just an attorney — she also bootstrapped a two-person tutoring operation into a multi-million dollar online learning company.
+      </p>
+      <p style="color:#374151; font-size:1.05rem; line-height:1.75; margin-bottom:2rem;">
+        That dual experience means she understands the decisions you're actually making — budget constraints, fast-moving deals, investor conversations — and gives you counsel that's practical, not just technically correct.
+      </p>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem;">
+        <div style="background:#fff; border:1px solid rgba(184,150,12,0.3); border-radius:12px; padding:1.25rem 1.5rem; text-align:center; min-width:140px;">
+          <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#b8960c;">2011</div>
+          <div style="font-size:0.85rem; color:#6b7280; font-weight:600; margin-top:0.25rem; letter-spacing:0.04em;">Founded</div>
+        </div>
+        <div style="background:#fff; border:1px solid rgba(184,150,12,0.3); border-radius:12px; padding:1.25rem 1.5rem; text-align:center; min-width:140px;">
+          <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#b8960c;">2</div>
+          <div style="font-size:0.85rem; color:#6b7280; font-weight:600; margin-top:0.25rem; letter-spacing:0.04em;">Attorneys</div>
+        </div>
+        <div style="background:#fff; border:1px solid rgba(184,150,12,0.3); border-radius:12px; padding:1.25rem 1.5rem; text-align:center; min-width:140px;">
+          <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#b8960c;">Flat</div>
+          <div style="font-size:0.85rem; color:#6b7280; font-weight:600; margin-top:0.25rem; letter-spacing:0.04em;">Fee Options</div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div style="border-radius:20px; overflow:hidden; box-shadow:0 24px 64px rgba(15,23,42,0.18);">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1200&q=80" alt="Attorney at work in Chicago office" style="width:100%; height:420px; object-fit:cover; display:block;" />
+      </div>
+      <div style="position:absolute; bottom:-24px; left:-24px; background:linear-gradient(135deg,#b8960c,#d4af37); border-radius:14px; padding:1.25rem 1.5rem; box-shadow:0 12px 32px rgba(184,150,12,0.35);">
+        <div style="font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; color:#0f172a;">Chicago, IL</div>
+        <div style="font-size:0.8rem; font-weight:700; color:rgba(15,23,42,0.7); letter-spacing:0.06em; text-transform:uppercase; margin-top:2px;">Ravenswood · 60640</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="testimonials-section" style="padding:6rem 1.5rem;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p class="section-label" style="margin-bottom:0.75rem;">Client Stories</p>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:#fff;">What Our Clients Say</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
+
+      <div class="glass-card" style="padding:2.25rem;">
+        <div style="display:flex; gap:0.3rem; margin-bottom:1.25rem;">
+          <span style="color:#d4af37; font-size:1.1rem;">★★★★★</span>
+        </div>
+        <p style="color:rgba(255,255,255,0.85); font-size:1.05rem; line-height:1.75; font-style:italic; margin-bottom:1.5rem;">"Y'all make me feel safe and cozy, like I've got a weighted blanket on while doing business."</p>
+        <div style="border-top:1px solid rgba(255,255,255,0.12); padding-top:1rem;">
+          <div style="font-family:'Playfair Display',serif; font-weight:600; color:#d4af37; font-size:1rem;">Molly F.</div>
+          <div style="font-size:0.82rem; color:rgba(255,255,255,0.45); margin-top:2px;">Chicago Small Business Owner</div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="padding:2.25rem;">
+        <div style="display:flex; gap:0.3rem; margin-bottom:1.25rem;">
+          <span style="color:#d4af37; font-size:1.1rem;">★★★★★</span>
+        </div>
+        <p style="color:rgba(255,255,255,0.85); font-size:1.05rem; line-height:1.75; font-style:italic; margin-bottom:1.5rem;">"It was seamless, even with two projects with tight deadlines. Both attorneys were responsive, knowledgeable, and thorough — and the costs were affordable for a very small business, which keeps me coming back."</p>
+        <div style="border-top:1px solid rgba(255,255,255,0.12); padding-top:1rem;">
+          <div style="font-family:'Playfair Display',serif; font-weight:600; color:#d4af37; font-size:1rem;">Xavier</div>
+          <div style="font-size:0.82rem; color:rgba(255,255,255,0.45); margin-top:2px;">Small Business Owner, Chicago</div>
+        </div>
+      </div>
+
+      <div class="glass-card" style="padding:2.25rem;">
+        <div style="display:flex; gap:0.3rem; margin-bottom:1.25rem;">
+          <span style="color:#d4af37; font-size:1.1rem;">★★★★★</span>
+        </div>
+        <p style="color:rgba(255,255,255,0.85); font-size:1.05rem; line-height:1.75; font-style:italic; margin-bottom:1.5rem;">"Our goal is to build long-term professional relationships as your trusted legal counsel — developing practical solutions that protect your business and let you focus on growth."</p>
+        <div style="border-top:1px solid rgba(255,255,255,0.12); padding-top:1rem;">
+          <div style="font-family:'Playfair Display',serif; font-weight:600; color:#d4af37; font-size:1rem;">Michelle Green</div>
+          <div style="font-size:0.82rem; color:rgba(255,255,255,0.45); margin-top:2px;">Founding Attorney, G & G Law</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog" class="blog-section" style="padding:6rem 1.5rem;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p class="section-label" style="margin-bottom:0.75rem;">Stay Informed</p>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:#0f172a;">Recent Insights</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.5rem;">
+
+      <div class="glass-card-light" style="padding:2rem; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,rgba(184,150,12,0.12),rgba(212,175,55,0.06)); border-radius:10px; padding:0.6rem 0.9rem; display:inline-block; margin-bottom:1rem;">
+          <span style="font-size:0.75rem; font-weight:700; color:#b8960c; letter-spacing:0.08em; text-transform:uppercase;">Employment Law</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:600; color:#0f172a; line-height:1.35; margin-bottom:0.75rem;">What New Laws are Coming to Illinois in 2026?</h3>
+        <p style="color:#4b5563; font-size:0.92rem; line-height:1.65; margin-bottom:1.25rem;">Six new employment law developments your small business needs to know — from Illinois Workplace Transparency changes to other 2026 legislative updates.</p>
+        <span style="font-size:0.8rem; color:#9ca3af;">November 2025</span>
+      </div>
+
+      <div class="glass-card-light" style="padding:2rem; overflow:hidden;">
+        <div style="background:linear-gradient(135deg,rgba(184,150,12,0.12),rgba(212,175,55,0.06)); border-radius:10px; padding:0.6rem 0.9rem; display:inline-block; margin-bottom:1rem;">
+          <span style="font-size:0.75rem; font-weight:700; color:#b8960c; letter-spacing:0.08em; text-transform:uppercase;">M&amp;A</span>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:600; color:#0f172a; line-height:1.35; margin-bottom:0.75rem;">Asset vs. Stock Purchase: Which One is Better?</h3>
+        <p style="color:#4b5563; font-size:0.92rem; line-height:1.65; margin-bottom:1.25rem;">Whether to structure a business purchase as an asset sale or a stock sale is one of the most consequential decisions in any M&amp;A transaction. Here's how to weigh it.</p>
+        <span style="font-size:0.8rem; color:#9ca3af;">September 2025</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section" style="padding:6rem 1.5rem;">
+  <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;">
+    <div>
+      <p class="section-label" style="margin-bottom:0.75rem;">Get in Touch</p>
+      <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:#fff; margin-bottom:1rem; line-height:1.2;">Tell us about your business.</h2>
+      <p style="color:rgba(255,255,255,0.65); font-size:1.05rem; line-height:1.7; margin-bottom:2.5rem;">We'll ask a few questions and give you a straight answer on whether and how we can help. No hard sell, no obligation.</p>
+      <div style="display:flex; flex-direction:column; gap:1.25rem;">
+        <a href="mailto:info@gglawoffices.com" style="display:flex; align-items:center; gap:0.9rem; text-decoration:none; color:rgba(255,255,255,0.8); font-size:1rem; transition:color 0.3s ease;" onmouseover="this.style.color='#d4af37'" onmouseout="this.style.color='rgba(255,255,255,0.8)'">
+          <span style="width:42px; height:42px; background:rgba(184,150,12,0.15); border:1px solid rgba(184,150,12,0.3); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">✉️</span>
+          info@gglawoffices.com
+        </a>
+        <div style="display:flex; align-items:center; gap:0.9rem; color:rgba(255,255,255,0.8); font-size:1rem;">
+          <span style="width:42px; height:42px; background:rgba(184,150,12,0.15); border:1px solid rgba(184,150,12,0.3); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.1rem;">📍</span>
+          4619 N Ravenswood, Suite 205A, Chicago, IL 60640
+        </div>
+      </div>
+      <div style="margin-top:2.5rem; padding:1.5rem; border:1px solid rgba(184,150,12,0.25); border-radius:12px; background:rgba(184,150,12,0.06);">
+        <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); line-height:1.6;">Use of this form does not create an attorney-client relationship. Do not send confidential information until you have spoken with one of our attorneys.</p>
+      </div>
+    </div>
+    <div class="glass-card" style="padding:2.5rem;">
+      <form action="#" method="POST" style="display:flex; flex-direction:column; gap:1.25rem;">
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:0.4rem; letter-spacing:0.04em; text-transform:uppercase;">Name</label>
+          <input type="text" name="name" placeholder="Your full name" class="form-input" required />
+        </div>
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:0.4rem; letter-spacing:0.04em; text-transform:uppercase;">Email</label>
+          <input type="email" name="email" placeholder="you@yourbusiness.com" class="form-input" required />
+        </div>
+        <div>
+          <label style="display:block; font-size:0.85rem; font-weight:700; color:rgba(255,255,255,0.7); margin-bottom:0.4rem; letter-spacing:0.04em; text-transform:uppercase;">Tell us about your business</label>
+          <textarea name="message" rows="5" placeholder="What stage is your business at? What legal issues are you facing?" class="form-input" style="resize:vertical;"></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; padding:1rem; font-size:1rem; text-align:center;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="padding:3rem 1.5rem 2rem;">
+  <div style="max-width:1200px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:3rem; flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:#fff; margin-bottom:0.5rem
