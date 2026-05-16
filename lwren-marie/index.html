@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<!--
+PAGE STRUCTURE PLAN
+===================
+1. <head>  — meta, OG, schema, fonts (Cormorant Garamond + Jost), Tailwind CDN, favicon
+2. <nav>   — sticky, blur backdrop, brand name left, links right
+3. #hero   — full-viewport gradient, brand name H1, tagline, two CTAs (Join + Login)
+4. #about  — dark section, what LWREN MARIE is about, three pillars
+5. #membership — light gradient section, membership benefits cards
+6. #social — dark section, IG + TikTok proof, follow CTAs
+7. #join   — diagonal gradient CTA section, email capture form
+8. #footer — dark footer, links, copyright
+9. Mobile bottom bar — sticky action strip (mobile only)
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LWREN MARIE</title>
+  <meta name="description" content="LWREN MARIE — exclusive content, style inspiration, and members-only access for the community that wants more. Join the inner circle today." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💇</text></svg>" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="LWREN MARIE — Join the Inner Circle" />
+  <meta property="og:description" content="Exclusive content, style inspiration, and members-only access. Follow LWREN MARIE on Instagram and TikTok." />
+  <meta property="og:url" content="https://www.lwrenmarie.com" />
+
+  <!-- Google Fonts: Cormorant Garamond + Jost (Beauty/Salon) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "LWREN MARIE",
+    "url": "https://www.lwrenmarie.com",
+    "sameAs": [
+      "https://www.instagram.com/lwrenmarie",
+      "https://www.tiktok.com/@lwrenmarie"
+    ]
+  }
+  </script>
+
+  <style>
+    /* ---- Base typography ---- */
+    body {
+      font-family: 'Jost', sans-serif;
+      font-size: 17px;
+      color: #1a1a1a;
+      background: #0d0d0d;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    /* ---- Smooth scroll ---- */
+    html { scroll-behavior: smooth; }
+
+    /* ---- Nav blur ---- */
+    .nav-blur {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(10, 10, 10, 0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ---- Hero gradient ---- */
+    .hero-bg {
+      background: linear-gradient(160deg, #1a0a1e 0%, #2d1236 30%, #0d0d0d 65%, #1a1020 100%);
+      min-height: 100svh;
+      min-height: 100vh;
+    }
+
+    /* ---- Accent colour ---- */
+    .accent { color: #c9a96e; }
+    .accent-bg { background-color: #c9a96e; }
+    .accent-border { border-color: #c9a96e; }
+
+    /* ---- Section: About (dark) ---- */
+    .section-dark {
+      background: linear-gradient(180deg, #0d0d0d 0%, #13091a 100%);
+    }
+
+    /* ---- Section: Membership (light-ish) ---- */
+    .section-muted {
+      background: linear-gradient(160deg, #f5f0eb 0%, #ede4d8 50%, #f0ebe3 100%);
+    }
+
+    /* ---- Section: Social (dark) ---- */
+    .section-social {
+      background: linear-gradient(135deg, #130820 0%, #1e0e2e 50%, #0d0d0d 100%);
+    }
+
+    /* ---- CTA diagonal gradient ---- */
+    .section-cta {
+      background: linear-gradient(135deg, #2d1236 0%, #1a0a1e 40%, #c9a96e 100%);
+    }
+
+    /* ---- Footer ---- */
+    .footer-bg {
+      background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+    }
+
+    /* ---- Pillar card ---- */
+    .pillar-card {
+      border: 1px solid rgba(201,169,110,0.25);
+      background: rgba(255,255,255,0.03);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pillar-card:hover {
+      border-color: rgba(201,169,110,0.6);
+      transform: translateY(-4px);
+    }
+
+    /* ---- Membership card ---- */
+    .mem-card {
+      background: #fff;
+      border-bottom: 3px solid #c9a96e;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .mem-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+    }
+
+    /* ---- Social badge ---- */
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border: 1px solid rgba(201,169,110,0.5);
+      border-radius: 2px;
+      color: #c9a96e;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
+      text-decoration: none;
+    }
+    .social-btn:hover {
+      background: #c9a96e;
+      color: #0d0d0d;
+    }
+
+    /* ---- Form ---- */
+    .form-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input::placeholder { color: rgba(255,255,255,0.45); }
+    .form-input:focus { border-color: #c9a96e; }
+
+    /* ---- Primary button ---- */
+    .btn-primary {
+      display: inline-block;
+      background: #c9a96e;
+      color: #0d0d0d;
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      min-height: 52px;
+    }
+    .btn-primary:hover {
+      background: #b8924f;
+      transform: translateY(-2px);
+    }
+
+    /* ---- Ghost button ---- */
+    .btn-ghost {
+      display: inline-block;
+      background: transparent;
+      color: #c9a96e;
+      font-family: 'Jost', sans-serif;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 15px 40px;
+      border: 1px solid #c9a96e;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      text-decoration: none;
+      min-height: 52px;
+    }
+    .btn-ghost:hover {
+      background: #c9a96e;
+      color: #0d0d0d;
+    }
+
+    /* ---- Decorative line ---- */
+    .deco-line {
+      width: 60px;
+      height: 1px;
+      background: #c9a96e;
+      margin: 0 auto 20px;
+    }
+
+    /* ---- Mobile bottom bar ---- */
+    .mobile-bar {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(10,10,10,0.95);
+      border-top: 1px solid rgba(201,169,110,0.3);
+      padding: 12px 16px;
+      gap: 10px;
+    }
+    @media (min-width: 768px) {
+      .mobile-bar { display: none; }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- ===================== NAV ===================== -->
+  <nav class="nav-blur">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <!-- Brand -->
+      <a href="#hero" class="text-white no-underline" style="font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:0.18em; font-weight:300;">
+        LWREN MARIE
+      </a>
+
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-gray-300 hover:text-yellow-300 no-underline transition-colors duration-200" style="font-family:'Jost',sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">About</a>
+        <a href="#membership" class="text-gray-300 hover:text-yellow-300 no-underline transition-colors duration-200" style="font-family:'Jost',sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">Membership</a>
+        <a href="#social" class="text-gray-300 hover:text-yellow-300 no-underline transition-colors duration-200" style="font-family:'Jost',sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase;">Follow</a>
+        <a href="#join" class="btn-primary" style="padding:10px 24px; font-size:13px; min-height:0;">Join Now</a>
+        <a href="https://www.lwrenmarie.com" class="btn-ghost" style="padding:9px 24px; font-size:13px; min-height:0;">Member Login</a>
+      </div>
+
+      <!-- Mobile hamburger placeholder -->
+      <button class="md:hidden text-white focus:outline-none" aria-label="Open menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-5 flex flex-col gap-4" style="background:rgba(10,10,10,0.97);">
+      <a href="#about" class="text-gray-300 py-2 no-underline" style="font-family:'Jost',sans-serif; font-size:14px; letter-spacing:0.08em; text-transform:uppercase;" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+      <a href="#membership" class="text-gray-300 py-2 no-underline" style="font-family:'Jost',sans-serif; font-size:14px; letter-spacing:0.08em; text-transform:uppercase;" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Membership</a>
+      <a href="#social" class="text-gray-300 py-2 no-underline" style="font-family:'Jost',sans-serif; font-size:14px; letter-spacing:0.08em; text-transform:uppercase;" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Follow</a>
+      <a href="#join" class="btn-primary text-center" style="font-size:13px;" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Join Now</a>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section id="hero" class="hero-bg flex flex-col items-center justify-center text-center px-6" style="padding-top:80px; padding-bottom:100px;">
+
+    <!-- Eyebrow -->
+    <p style="font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:#c9a96e; margin-bottom:24px;">Members-Only Community</p>
+
+    <!-- H1 -->
+    <h1 style="font-family:'Cormorant Garamond',serif; font-size:clamp(52px,10vw,110px); font-weight:300; line-height:1.05; color:#fff; margin-bottom:16px; letter-spacing:0.06em;">
+      LWREN<br /><em style="font-style:italic; color:#c9a96e;">MARIE</em>
+    </h1>
+
+    <div class="deco-line" style="margin-bottom:28px;"></div>
+
+    <!-- Tagline -->
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(18px,3vw,26px); font-weight:300; color:rgba(255,255,255,0.78); max-width:580px; line-height:1.6; margin-bottom:12px; font-style:italic;">
+      Style is a language. Learn to speak it fluently.
+    </p>
+    <p style="font-family:'Jost',sans-serif; font-size:15px; color:rgba(255,255,255,0.5); max-width:480px; line-height:1.7; margin-bottom:44px; font-weight:300;">
+      Exclusive content, behind-the-scenes access, and a curated community for women who take their aesthetic seriously. Available to members only.
+    </p>
+
+    <!-- CTAs -->
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#join" class="btn-primary">Join the Inner Circle</a>
+      <a href="https://www.lwrenmarie.com" class="btn-ghost">Member Login</a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div style="margin-top:64px; display:flex; flex-direction:column; align-items:center; gap:6px;">
+      <p style="font-family:'Jost',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.3);">Scroll</p>
+      <div style="width:1px; height:40px; background:linear-gradient(to bottom, rgba(201,169,110,0.6), transparent);"></div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" class="section-dark py-24 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+
+      <p style="font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:#c9a96e; margin-bottom:20px;">Who She Is</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(36px,6vw,62px); font-weight:300; color:#fff; line-height:1.2; margin-bottom:20px;">
+        More Than an Aesthetic.<br /><em style="color:#c9a96e;">A Standard.</em>
+      </h2>
+      <div class="deco-line"></div>
+      <p style="font-family:'Jost',sans-serif; font-size:16px; color:rgba(255,255,255,0.6); max-width:620px; margin:0 auto 64px; line-height:1.85; font-weight:300;">
+        LWREN MARIE is a creative and style curator who built her audience across Instagram and TikTok by being unapologetically precise about beauty, fashion, and self-expression. The membership is where she goes deeper — no filters, no algorithm, just the real work.
+      </p>
+
+      <!-- Three pillars -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <!-- Pillar 1 -->
+        <div class="pillar-card rounded-none p-8 text-left">
+          <div style="font-size:32px; margin-bottom:16px;">✦</div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:#fff; margin-bottom:12px;">Style Education</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:rgba(255,255,255,0.5); line-height:1.8; font-weight:300;">In-depth guides, outfit breakdowns, and the philosophy behind building a wardrobe that actually works for your life.</p>
+        </div>
+        <!-- Pillar 2 -->
+        <div class="pillar-card rounded-none p-8 text-left">
+          <div style="font-size:32px; margin-bottom:16px;">✦</div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:#fff; margin-bottom:12px;">Behind the Scenes</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:rgba(255,255,255,0.5); line-height:1.8; font-weight:300;">First access to shoots, creative process content, and unfiltered opinions you won't find on public social feeds.</p>
+        </div>
+        <!-- Pillar 3 -->
+        <div class="pillar-card rounded-none p-8 text-left">
+          <div style="font-size:32px; margin-bottom:16px;">✦</div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:#fff; margin-bottom:12px;">Community</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:rgba(255,255,255,0.5); line-height:1.8; font-weight:300;">A private space to connect with women who share the same standards, swap ideas, and grow together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MEMBERSHIP ===================== -->
+  <section id="membership" class="section-muted py-24 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+
+      <p style="font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:#8a6a3a; margin-bottom:20px;">What You Get</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,5vw,58px); font-weight:300; color:#1a1a1a; line-height:1.2; margin-bottom:16px;">
+        Inside the Membership
+      </h2>
+      <div class="deco-line" style="margin-bottom:48px;"></div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <!-- Card 1 -->
+        <div class="mem-card p-8 text-left">
+          <div style="width:40px; height:2px; background:#c9a96e; margin-bottom:20px;"></div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#1a1a1a; margin-bottom:10px;">Exclusive Content</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:#555; line-height:1.8; font-weight:300;">Members-only posts, videos, and guides published weekly — content that never hits the public feed.</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="mem-card p-8 text-left">
+          <div style="width:40px; height:2px; background:#c9a96e; margin-bottom:20px;"></div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#1a1a1a; margin-bottom:10px;">Style Deep-Dives</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:#555; line-height:1.8; font-weight:300;">Detailed breakdowns of trends, personal style systems, capsule wardrobes, and shopping edits with real reasoning.</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="mem-card p-8 text-left">
+          <div style="width:40px; height:2px; background:#c9a96e; margin-bottom:20px;"></div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#1a1a1a; margin-bottom:10px;">Early Access</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:#555; line-height:1.8; font-weight:300;">Be first to know about drops, collaborations, events, and anything new coming from the LWREN MARIE brand.</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="mem-card p-8 text-left">
+          <div style="width:40px; height:2px; background:#c9a96e; margin-bottom:20px;"></div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#1a1a1a; margin-bottom:10px;">Community Access</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:#555; line-height:1.8; font-weight:300;">Connect with other members in a private space built for real conversation — not performative social media.</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="mem-card p-8 text-left">
+          <div style="width:40px; height:2px; background:#c9a96e; margin-bottom:20px;"></div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#1a1a1a; margin-bottom:10px;">Q&amp;A Sessions</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:#555; line-height:1.8; font-weight:300;">Direct access to Lwren Marie for personal style questions, creative feedback, and honest conversation.</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="mem-card p-8 text-left">
+          <div style="width:40px; height:2px; background:#c9a96e; margin-bottom:20px;"></div>
+          <h3 style="font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#1a1a1a; margin-bottom:10px;">Member Discounts</h3>
+          <p style="font-family:'Jost',sans-serif; font-size:14px; color:#555; line-height:1.8; font-weight:300;">Exclusive discount codes and curated partner offers across fashion, beauty, and lifestyle brands.</p>
+        </div>
+      </div>
+
+      <a href="#join" class="btn-primary" style="background:#1a1a1a; color:#c9a96e;">Become a Member</a>
+    </div>
+  </section>
+
+  <!-- ===================== SOCIAL PROOF ===================== -->
+  <section id="social" class="section-social py-24 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+
+      <p style="font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:#c9a96e; margin-bottom:20px;">Follow the Journey</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,5vw,56px); font-weight:300; color:#fff; line-height:1.2; margin-bottom:20px;">
+        On Instagram &amp; TikTok
+      </h2>
+      <div class="deco-line"></div>
+      <p style="font-family:'Jost',sans-serif; font-size:15px; color:rgba(255,255,255,0.55); max-width:500px; margin:0 auto 48px; line-height:1.8; font-weight:300;">
+        The public content is the preview. The membership is the full story. Follow along and see why the community keeps growing.
+      </p>
+
+      <!-- Social buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <a href="https://www.instagram.com/lwrenmarie" target="_blank" rel="noopener" class="social-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+          </svg>
+          Instagram · @lwrenmarie
+        </a>
+        <a href="https://www.tiktok.com/@lwrenmarie" target="_blank" rel="noopener" class="social-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.19 8.19 0 004.77 1.52V6.69a4.85 4.85 0 01-1-.0z"/>
+          </svg>
+          TikTok · @lwrenmarie
+        </a>
+      </div>
+
+      <!-- Testimonial strip -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div style="border: 1px solid rgba(201,169,110,0.2); padding:24px; text-align:left;">
+          <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:rgba(255,255,255,0.75); line-height:1.7; font-style:italic; margin-bottom:14px;">"The style content alone is worth every penny. I've completely overhauled how I approach getting dressed."</p>
+          <p style="font-family:'Jost',sans-serif; font-size:12px; color:#c9a96e; letter-spacing:0.1em; text-transform:uppercase;">— Member</p>
+        </div>
+        <div style="border: 1px solid rgba(201,169,110,0.2); padding:24px; text-align:left;">
+          <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:rgba(255,255,255,0.75); line-height:1.7; font-style:italic; margin-bottom:14px;">"I've been following Lwren on TikTok for ages. The membership is where she actually talks to you. It's different."</p>
+          <p style="font-family:'Jost',sans-serif; font-size:12px; color:#c9a96e; letter-spacing:0.1em; text-transform:uppercase;">— Member</p>
+        </div>
+        <div style="border: 1px solid rgba(201,169,110,0.2); padding:24px; text-align:left;">
+          <p style="font-family:'Cormorant Garamond',serif; font-size:17px; color:rgba(255,255,255,0.75); line-height:1.7; font-style:italic; margin-bottom:14px;">"The community is genuinely warm. Not a place where people compete — a place where we actually help each other."</p>
+          <p style="font-family:'Jost',sans-serif; font-size:12px; color:#c9a96e; letter-spacing:0.1em; text-transform:uppercase;">— Member</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== JOIN / EMAIL CAPTURE ===================== -->
+  <section id="join" class="section-cta py-24 px-6">
+    <div class="max-w-xl mx-auto text-center">
+
+      <p style="font-family:'Jost',sans-serif; font-size:12px; letter-spacing:0.25em; text-transform:uppercase; color:rgba(255,255,255,0.6); margin-bottom:20px;">Get First Access</p>
+      <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(34px,5vw,54px); font-weight:300; color:#fff; line-height:1.2; margin-bottom:16px;">
+        Join the<br /><em style="color:#0d0d0d;">Inner Circle</em>
+      </h2>
+      <div style="width:50px; height:1px; background:rgba(255,255,255,0.4); margin:0 auto 24px;"></div>
+      <p style="font-family:'Jost',sans-serif; font-size:15px; color:rgba(255,255,255,0.7); margin-bottom:36px; line-height:1.75; font-weight:300;">
+        Drop your email and be the first to know when new membership spots open. No spam — just the access you actually want.
+      </p>
+
+      <!-- Form -->
+      <form onsubmit="event.preventDefault(); document.getElementById('form-thanks').style.display='block'; this.style.display='none';">
+        <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:14px;">
+          <input type="text" placeholder="Your first name" class="form-input" required aria-label="First name" />
+          <input type="email" placeholder="Your email address" class="form-input" required aria-label="Email address" />
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%; background:#0d0d0d; color:#c9a96e;">
+          Request My Spot
+        </button>
+        <p style="font-family:'Jost',sans-serif; font-size:12px; color:rgba(255,255,255,0.4); margin-top:14px; font-weight:300;">No spam. Unsubscribe anytime.</p>
+      </form>
+
+      <!-- Thank you message -->
+      <div id="form-thanks" style="display:none; padding:32px; border:1px solid rgba(255,255,255,0.3);">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:24px; color:#fff; margin-bottom:8px; font-style:italic;">You're on the list.</p>
+        <p style="font-family:'Jost',sans-serif; font-size:14px; color:rgba(255,255,255,0.6); font-weight:300;">We'll be in touch soon.</p>
+      </div>
+
+      <!-- Existing member link -->
+      <div style="margin-top:36px;">
+        <p style="font-family:'Jost',sans-serif; font-size:14px; color:rgba(255,255,255,0.5);">
+          Already a member? 
+          <a href="https://www.lwrenmarie.com" style="color:#fff; text-decoration:underline; text-underline-offset:3px;">Log in here</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer-bg py-14 px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 mb-12">
+
+        <!-- Brand col -->
+        <div>
+          <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300; color:#fff; letter-spacing:0.18em; margin-bottom:12px;">LWREN MARIE</p>
+          <p style="font-family:'Jost',sans-serif; font-size:13px; color:rgba(255,255,255,0.4); line-height:1.8; font-weight:300;">Style education, creative content, and a private community for women who want more than a feed.</p>
+        </div>
+
+        <!-- Links col -->
+        <div>
+          <p style="font-family:'Jost',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#c9a96e; margin-bottom:16px;">Navigate</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="#about" style="font-family:'Jost',sans-serif; font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none; transition:color 0.2s;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">About</a>
+            <a href="#membership" style="font-family:'Jost',sans-serif; font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Membership</a>
+            <a href="#join" style="font-family:'Jost',sans-serif; font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Join</a>
+            <a href="https://www.lwrenmarie.com" style="font-family:'Jost',sans-serif; font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Member Login</a>
+          </div>
+        </div>
+
+        <!-- Social col -->
+        <div>
+          <p style="font-family:'Jost',sans-serif; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:#c9a96e; margin-bottom:16px;">Follow</p>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="https://www.instagram.com/lwrenmarie" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif; font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">Instagram → @lwrenmarie</a>
+            <a href="https://www.tiktok.com/@lwrenmarie" target="_blank" rel="noopener" style="font-family:'Jost',sans-serif; font-size:13px; color:rgba(255,255,255,0.45); text-decoration:none;" onmouseover="this.style.color='#c9a96e'" onmouseout="this.style.color='rgba(255,255,255,0.45)'">TikTok → @lwrenmarie</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom bar -->
+      <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:24px; display:flex; flex-direction:column; gap:8px; align-items:center; text-align:center;">
+        <p style="font-family:'Jost',sans-serif; font-size:12px; color:rgba(255,255,255,0.25); font-weight:300; letter-spacing:0.06em;">
+          &copy; 2025 LWREN MARIE · All Rights Reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== MOBILE BOTTOM BAR ===================== -->
+  <div class="mobile-bar">
+    <a href="#join" class="btn-primary" style="flex:1; text-align:center; font-size:13px; padding:14px 10px;">Join Now</a>
+    <a href="https://www.lwrenmarie.com" class="btn-ghost" style="flex:1; text-align:center; font-size:13px; padding:13px 10px;">Login</a>
+  </div>
+
+  <!-- Bottom padding for mobile bar -->
+  <div class="md:hidden" style="height:80px;"></div>
+
+</body>
+</html>
