@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<!--
+PAGE STRUCTURE PLAN
+===================
+1. <head> — fonts (Cormorant Garamond + Jost), Tailwind CDN, favicon, OG, Schema
+2. Sticky nav — logo, 6 top-level links, CTA button
+3. Announcement bar — single rotating offer
+4. Hero section — gradient bg, headline, sub-headline, primary + secondary CTA
+5. Trust band — 3 press quotes + shipping/returns badges
+6. Category shortcuts — 6 visual category cards (CSS gradient thumbnails)
+7. Smart Creation sustainability strip — 4 fabric pillars
+8. Featured products grid — 8 real products from page text
+9. Email capture section — 10% off offer with form
+10. Footer — links, social, payment icons
+11. Mobile bottom action bar
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanctuary Clothing Inc | Casual, Ethical &amp; Sustainable Fashion</title>
+  <meta name="description" content="Shop Sanctuary Clothing Inc — ethically made pants, tops, and denim using Smart Creation™ sustainable fabrics. Free 2-day shipping on US orders over $150. 30-day returns." />
+  <meta property="og:title" content="Sanctuary Clothing Inc | Casual, Ethical &amp; Sustainable Fashion" />
+  <meta property="og:description" content="Shop Sanctuary Clothing Inc — ethically made pants, tops, and denim using Smart Creation™ sustainable fabrics. Free 2-day shipping on orders over $150." />
+  <meta property="og:url" content="https://www.sanctuaryclothing.com" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "Sanctuary Clothing Inc",
+    "url": "https://www.sanctuaryclothing.com",
+    "email": "hello@sanctuaryclothing.com",
+    "description": "Casual, ethical, and sustainable clothing brand specialising in pants, tops, denim, and Smart Creation sustainable fabrics.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.instagram.com/sanctuaryclothing",
+      "https://www.facebook.com/sanctuaryclothing",
+      "https://www.tiktok.com/@sanctuaryclothing"
+    ]
+  }
+  </script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Jost', sans-serif; font-size: 16px; color: #1a1a1a; background: #faf9f7; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+    /* Announcement bar */
+    .announce-bar {
+      background: #2c2c2c;
+      color: #e8e0d5;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-align: center;
+      padding: 10px 16px;
+      font-weight: 400;
+    }
+    .announce-bar span { display: none; }
+    .announce-bar span.active { display: inline; }
+
+    /* Nav */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(250, 249, 247, 0.92);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #1a1a1a;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #3a3a3a;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #7a5c40; }
+    .nav-cta {
+      background: #2c2c2c;
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      text-decoration: none;
+      transition: background 0.2s;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-cta:hover { background: #7a5c40; }
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #1a1a1a;
+      min-width: 48px;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100svh;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, #2c1f14 0%, #4a3525 30%, #7a5c40 60%, #c4a882 85%, #e8ddd0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 40%, rgba(196,168,130,0.25) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 80px 24px 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      padding-left: 48px;
+    }
+    .hero-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c4a882;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(44px, 7vw, 88px);
+      font-weight: 300;
+      line-height: 1.05;
+      color: #faf9f7;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: #c4a882;
+    }
+    .hero-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 17px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(250,249,247,0.82);
+      margin-bottom: 40px;
+      max-width: 480px;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: #c4a882;
+      color: #1a1a1a;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      text-decoration: none;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #b89268; transform: translateY(-1px); }
+    .btn-secondary {
+      border: 1px solid rgba(250,249,247,0.5);
+      color: #faf9f7;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 16px 36px;
+      text-decoration: none;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(250,249,247,0.1); border-color: #faf9f7; }
+    .hero-badges {
+      display: flex;
+      gap: 32px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(250,249,247,0.7);
+      font-size: 13px;
+      font-weight: 400;
+    }
+    .hero-badge-icon { font-size: 18px; }
+
+    /* Trust band — press quotes */
+    .trust-band {
+      background: #f5f0ea;
+      padding: 56px 24px;
+    }
+    .trust-band-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .trust-band-label {
+      text-align: center;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #7a5c40;
+      margin-bottom: 36px;
+    }
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .quote-card {
+      background: #fff;
+      padding: 32px 28px;
+      border-top: 3px solid #c4a882;
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #2c2c2c;
+      margin-bottom: 16px;
+    }
+    .quote-source {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a5c40;
+    }
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+    .trust-badge-item {
+      text-align: center;
+    }
+    .trust-badge-item .icon { font-size: 28px; margin-bottom: 8px; }
+    .trust-badge-item .label {
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #3a3a3a;
+    }
+    .trust-badge-item .sublabel {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      color: #7a7a7a;
+      margin-top: 2px;
+    }
+
+    /* Category shortcuts */
+    .categories-section {
+      background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
+      padding: 72px 24px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-eyebrow {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #c4a882;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      color: #faf9f7;
+      line-height: 1.1;
+    }
+    .categories-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .cat-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .cat-card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.4s ease;
+    }
+    .cat-card:hover .cat-card-bg { transform: scale(1.04); }
+    .cat-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20,14,8,0.75) 0%, transparent 60%);
+    }
+    .cat-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 24px;
+    }
+    .cat-card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: #faf9f7;
+      margin-bottom: 4px;
+    }
+    .cat-card-cta {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #c4a882;
+    }
+    .cat-bg-pants { background: linear-gradient(135deg, #5c4a35 0%, #8a7060 50%, #b09a82 100%); }
+    .cat-bg-tops { background: linear-gradient(135deg, #3a4a5c 0%, #5a7080 50%, #8aaabb 100%); }
+    .cat-bg-denim { background: linear-gradient(135deg, #2a3a5a 0%, #4a5a7a 50%, #7a8aaa 100%); }
+    .cat-bg-dresses { background: linear-gradient(135deg, #5a3a4a 0%, #8a5a6a 50%, #c49090 100%); }
+    .cat-bg-swim { background: linear-gradient(135deg, #1a4a5a 0%, #2a7a8a 50%, #60b0c0 100%); }
+    .cat-bg-sustainable { background: linear-gradient(135deg, #2a4a2a 0%, #4a7a4a 50%, #7ab07a 100%); }
+
+    /* Smart Creation strip */
+    .sustainability-section {
+      background: linear-gradient(160deg, #f5f0ea 0%, #ede4d8 50%, #e0d4c4 100%);
+      padding: 72px 24px;
+    }
+    .sustainability-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .sustain-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .sustain-left {}
+    .sustain-badge {
+      display: inline-block;
+      background: #2c2c2c;
+      color: #c4a882;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      margin-bottom: 20px;
+    }
+    .sustain-left h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 300;
+      color: #2c2c2c;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .sustain-left p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: #555;
+      margin-bottom: 28px;
+    }
+    .sustain-link {
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #7a5c40;
+      text-decoration: none;
+      border-bottom: 1px solid #7a5c40;
+      padding-bottom: 2px;
+    }
+    .fabric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .fabric-card {
+      background: #fff;
+      padding: 24px 20px;
+      border-left: 3px solid #c4a882;
+    }
+    .fabric-icon { font-size: 24px; margin-bottom: 10px; }
+    .fabric-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c2c2c;
+      margin-bottom: 6px;
+    }
+    .fabric-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Products */
+    .products-section {
+      background: linear-gradient(180deg, #1a1a1a 0%, #2c2c2c 100%);
+      padding: 72px 24px;
+    }
+    .products-inner { max-width: 1280px; margin: 0 auto; }
+    .products-section .section-title { color: #faf9f7; }
+    .products-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      justify-content: center;
+    }
+    .tab-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 12px 24px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      min-height: 48px;
+    }
+    .tab-btn.active { color: #c4a882; border-bottom-color: #c4a882; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: #2a2a2a;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .product-card:hover { transform: translateY(-3px); }
+    .product-img-wrap {
+      position: relative;
+      overflow: hidden;
+      padding-top: 125%;
+      background: #3a3a3a;
+    }
+    .product-img-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #c4a882;
+      color: #1a1a1a;
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 8px;
+    }
+    .product-info { padding: 16px; }
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #faf9f7;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .product-color {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 8px;
+    }
+    .product-price {
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: #c4a882;
+    }
+    .product-img-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      background: linear-gradient(135deg, #3a3020 0%, #5a4a35 100%);
+    }
+
+    /* Email capture */
+    .email-section {
+      background: linear-gradient(135deg, #7a5c40 0%, #4a3525 40%, #2c1f14 100%);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .email-inner { max-width: 560px; margin: 0 auto; }
+    .email-section h2 {
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 300;
+      color: #faf9f7;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .email-section p {
+      font-size: 16px;
+      color: rgba(250,249,247,0.75);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .email-form {
+      display: flex;
+      gap: 0;
+      max-width: 440px;
+      margin: 0 auto 16px;
+    }
+    .email-input {
+      flex: 1;
+      padding: 16px 20px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      border: 1px solid rgba(196,168,130,0.4);
+      background: rgba(255,255,255,0.08);
+      color: #faf9f7;
+      outline: none;
+      min-height: 52px;
+    }
+    .email-input::placeholder { color: rgba(250,249,247,0.45); }
+    .email-input:focus { border-color: #c4a882; }
+    .email-submit {
+      background: #c4a882;
+      color: #1a1a1a;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0 28px;
+      border: none;
+      cursor: pointer;
+      min-height: 52px;
+      transition: background 0.2s;
+    }
+    .email-submit:hover { background: #b89268; }
+    .email-legal {
+      font-size: 12px;
+      color: rgba(250,249,247,0.45);
+    }
+
+    /* Footer */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.65);
+      padding: 64px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #faf9f7;
+      margin-bottom: 14px;
+    }
+    .footer-brand-desc {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 20px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 14px;
+    }
+    .footer-social a {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-social a:hover { color: #c4a882; }
+    .footer-col h4 {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #faf9f7;
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: #c4a882; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-legal {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-legal a { color: rgba(255,255,255,0.45); text-decoration: none; }
+    .footer-legal a:hover { color: #c4a882; }
+    .footer-payments {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .pay-badge {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.6);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 4px 8px;
+      border-radius: 3px;
+    }
+
+    /* Mobile bottom bar */
+    .mobile-action-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1a1a1a;
+      border-top: 1px solid rgba(196,168,130,0.3);
+      padding: 12px 16px;
+      z-index: 99;
+      gap: 10px;
+    }
+    .mob-bar-btn {
+      flex: 1;
+      padding: 14px 10px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mob-bar-primary {
+      background: #c4a882;
+      color: #1a1a1a;
+    }
+    .mob-bar-secondary {
+      background: transparent;
+      color: #c4a882;
+      border: 1px solid #c4a882;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: flex; }
+      .hero-inner { padding: 80px 24px 100px; max-width: 100%; }
+      .quotes-grid { grid-template-columns: 1fr; gap: 16px; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .sustain-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .email-form { flex-direction: column; }
+      .email-input { min-height: 52px; }
+      .email-submit { min-height: 52px; width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .mobile-action-bar { display: flex; }
+      footer { padding-bottom: 90px; }
+    }
+    @media (max-width: 480px) {
+      .categories-grid { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .fabric-grid { grid-template-columns: 1fr; }
+      .trust-badges { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announce-bar" id="announceBar" role="marquee" aria-live="polite">
+  <span class="active" id="ann0">✦ Free 2-Day Shipping on All US Orders Over $150</span>
+  <span id="ann1">✦ Spring 2026 Collection — New Arrivals Every Week</span>
+  <span id="ann2">✦ Subscribe &amp; Get 10% Off Your First Order</span>
+</div>
+
+<!-- Navigation -->
+<nav class="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="https://www.sanctuaryclothing.com" class="nav-logo" aria-label="Sanctuary Clothing Inc home">Sanctuary</a>
+    <ul class="nav-links" role="list">
+      <li><a href="https://www.sanctuaryclothing.com/collections/new-arrivals">New Arrivals</a></li>
+      <li><a href="https://www.sanctuaryclothing.com/collections/clothing">Clothing</a></li>
+      <li><a href="https://www.sanctuaryclothing.com/collections/denim">Denim</a></li>
+      <li><a href="https://www.sanctuaryclothing.com/pages/smart-creation">Smart Creation™</a></li>
+      <li><a href="https://www.sanctuaryclothing.com/collections/sale">Sale</a></li>
+    </ul>
+    <a href="https://www.sanctuaryclothing.com/collections/best-sellers" class="nav-cta">Shop Now</a>
+    <button class="nav-mobile-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Spring 2026 Collection</p>
+    <h1>Clothes built<br />for <em>real life.</em></h1>
+    <p class="hero-sub">Sanctuary Clothing Inc designs elevated everyday essentials — from the pants that launched a following to linen sets made with Smart Creation™ sustainable fabrics. Effortless fits. Ethical choices.</p>
+    <div class="hero-ctas">
+      <a href="https://www.sanctuaryclothing.com/collections/new-arrivals" class="btn-primary">Shop New Arrivals</a>
+      <a href="https://www.sanctuaryclothing.com/pages/smart-creation" class="btn-secondary">Our Sustainability Story</a>
+    </div>
+    <div class="hero-badges">
+      <div class="hero-badge"><span class="hero-badge-icon">📦</span><span>Free 2-Day Shipping over $150</span></div>
+      <div class="hero-badge"><span class="hero-badge-icon">↩</span><span>30-Day Returns &amp; Free Exchanges</span></div>
+      <div class="hero-badge"><span class="hero-badge-icon">🌿</span><span>Smart Creation™ Sustainable Fabrics</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Band — Press Quotes -->
+<section class="trust-band" aria-label="Press and trust signals">
+  <div class="trust-band-inner">
+    <p class="trust-band-label">As Featured In</p>
+    <div class="quotes-grid">
+      <div class="quote-card">
+        <p class="quote-text">"Sanctuary doesn't just offer pants — the brand specialises in them."</p>
+        <p class="quote-source">Fashion Press</p>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"These are the elevated essentials worth your closet space."</p>
+        <p class="quote-source">Style Edit</p>
+      </div>
+      <div class="quote-card">
+        <p class="quote-text">"Sanctuary Clothing is a one-stop shop for your summer wardrobe."</p>
+        <p class="quote-source">Summer Style Guide</p>
+      </div>
+    </div>
+    <div class="trust-badges">
+      <div class="trust-badge-item">
+        <div class="icon">🚚</div>
+        <div class="label">Free 2-Day Shipping</div>
+        <div class="sublabel">On US orders over $150</div>
+      </div>
+      <div class="trust-badge-item">
+        <div class="icon">↩</div>
+        <div class="label">30-Day Returns</div>
+        <div class="sublabel">Free exchanges always</div>
+      </div>
+      <div class="trust-badge-item">
+        <div class="icon">🌿</div>
+        <div class="label">Smart Creation™</div>
+        <div class="sublabel">Ethically sourced fabrics</div>
+      </div>
+      <div class="trust-badge-item">
+        <div class="icon">💬</div>
+        <div class="label">Live Support</div>
+        <div class="sublabel">Email us anytime</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Shop by Category -->
+<section class="categories-section" aria-label="Shop by category">
+  <div class="section-header">
+    <p class="section-eyebrow">Browse the Collection</p>
+    <h2 class="section-title">Shop by Category</h2>
+  </div>
+  <div class="categories-grid">
+    <a href="https://www.sanctuaryclothing.com/collections/pants" class="cat-card" aria-label="Shop Pants">
+      <div class="cat-card-bg cat-bg-pants"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-content">
+        <p class="cat-card-name">Pants</p>
+        <p class="cat-card-cta">Shop Styles →</p>
+      </div>
+    </a>
+    <a href="https://www.sanctuaryclothing.com/collections/tops" class="cat-card" aria-label="Shop Tops">
+      <div class="cat-card-bg cat-bg-tops"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-content">
+        <p class="cat-card-name">Tops</p>
+        <p class="cat-card-cta">Shop Styles →</p>
+      </div>
+    </a>
+    <a href="https://www.sanctuaryclothing.com/collections/denim" class="cat-card" aria-label="Shop Denim">
+      <div class="cat-card-bg cat-bg-denim"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-content">
+        <p class="cat-card-name">Denim</p>
+        <p class="cat-card-cta">Shop Styles →</p>
+      </div>
+    </a>
+    <a href="https://www.sanctuaryclothing.com/collections/dresses-jumpsuits" class="cat-card" aria-label="Shop Dresses and Jumpsuits">
+      <div class="cat-card-bg cat-bg-dresses"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-content">
+        <p class="cat-card-name">Dresses &amp; Jumpsuits</p>
+        <p class="cat-card-cta">Shop Styles →</p>
+      </div>
+    </a>
+    <a href="https://www.sanctuaryclothing.com/collections/swim" class="cat-card" aria-label="Shop Swim">
+      <div class="cat-card-bg cat-bg-swim"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-content">
+        <p class="cat-card-name">Swim</p>
+        <p class="cat-card-cta">Shop Styles →</p>
+      </div>
+    </a>
+    <a href="https://www.sanctuaryclothing.com/collections/sustainability" class="cat-card" aria-label="Shop Sustainable Styles">
+      <div class="cat-card-bg cat-bg-sustainable"></div>
+      <div class="cat-card-overlay"></div>
+      <div class="cat-card-content">
+        <p class="cat-card-name">Sustainable Styles</p>
+        <p class="cat-card-cta">Explore Smart Creation™ →</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- Smart Creation™ / Sustainability -->
+<section class="sustainability-section" aria-label="Smart Creation sustainability">
+  <div class="sustainability-inner">
+    <div class="sustain-grid">
+      <div class="sustain-left">
+        <span class="sustain-
