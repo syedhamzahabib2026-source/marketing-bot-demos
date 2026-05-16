@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<!--
+  PAGE STRUCTURE PLAN
+  ===================
+  1. <head> — fonts, tailwind, schema, OG, favicon
+  2. Sticky Nav — logo + desktop links + CTA button
+  3. Hero — gradient bg, headline, subhead, dual CTA, trust micro-bar
+  4. Trust Strip — stats row
+  5. Category Grid — 8 product categories as tiles
+  6. How It Works — 3-step process for new wholesale buyers
+  7. Tradeshow Section — MAGIC Las Vegas 2026 details
+  8. UGC/Social Proof — #ELLISONGIRLS
+  9. Email Signup — newsletter with value prop
+  10. Footer — links, contact, policy
+  11. Mobile bottom action bar
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ellison Apparel – Wholesale Womens Clothing and Apparel</title>
+  <meta name="description" content="Ellison Apparel is a women's wholesale clothing company in the LA Fashion District. Contemporary styles, competitive minimums, direct online ordering for retail buyers." />
+  <meta property="og:title" content="Ellison Apparel – Wholesale Womens Clothing and Apparel" />
+  <meta property="og:description" content="Contemporary women's wholesale clothing sourced from the LA Fashion District. New arrivals weekly. Open to registered retail buyers." />
+  <meta property="og:url" content="https://www.shopellison.com" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👗</text></svg>" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ClothingStore",
+    "name": "Ellison Apparel",
+    "url": "https://www.shopellison.com",
+    "description": "Women's wholesale clothing company in the LA Fashion District specialising in contemporary styles.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Los Angeles",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "areaServed": "US",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Women's Wholesale Apparel"
+    }
+  }
+  </script>
+  <style>
+    body { font-family: 'Jost', sans-serif; font-size: 16px; color: #1a1a1a; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+    .nav-blur { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .hero-gradient {
+      background: linear-gradient(135deg, #1a0a2e 0%, #2d1155 30%, #7b2d6e 65%, #c4607a 100%);
+    }
+    .category-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.18); }
+    .category-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .step-line::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #c4607a, #7b2d6e);
+    }
+    @media (max-width: 767px) { .step-line::after { display: none; } }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- ===================== STICKY NAV ===================== -->
+  <nav style="position:sticky;top:0;z-index:50;background:rgba(20,5,40,0.82);" class="nav-blur w-full">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="https://www.shopellison.com" class="flex items-center gap-2">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#f5e6f0;letter-spacing:0.05em;">ELLISON</span>
+        <span style="font-family:'Jost',sans-serif;font-size:0.65rem;font-weight:300;color:#c4a0b8;letter-spacing:0.18em;text-transform:uppercase;line-height:1.1;padding-top:2px;">APPAREL</span>
+      </a>
+      <!-- Desktop links -->
+      <div class="hidden md:flex items-center gap-6">
+        <a href="https://www.shopellison.com/collections/new-arrivals" style="color:#e0c8d8;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;" class="hover:text-white transition-colors">New Arrivals</a>
+        <a href="https://www.shopellison.com/collections/best-sellers" style="color:#e0c8d8;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;" class="hover:text-white transition-colors">Best Sellers</a>
+        <a href="https://www.shopellison.com/collections/dresses" style="color:#e0c8d8;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;" class="hover:text-white transition-colors">Dresses</a>
+        <a href="https://www.shopellison.com/collections/tops" style="color:#e0c8d8;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;" class="hover:text-white transition-colors">Tops</a>
+        <a href="https://www.shopellison.com/collections/denim-by-ellison" style="color:#e0c8d8;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;" class="hover:text-white transition-colors">Denim</a>
+        <a href="https://www.shopellison.com/pages/about-us" style="color:#e0c8d8;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;" class="hover:text-white transition-colors">About</a>
+      </div>
+      <!-- Nav CTAs -->
+      <div class="flex items-center gap-3">
+        <a href="https://www.shopellison.com/account/login" style="color:#e0c8d8;font-size:0.8rem;letter-spacing:0.1em;" class="hidden md:inline hover:text-white transition-colors">Log In</a>
+        <a href="https://www.shopellison.com/account/register" style="background:linear-gradient(90deg,#c4607a,#7b2d6e);color:#fff;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;padding:10px 20px;border-radius:2px;min-height:48px;display:flex;align-items:center;" class="hover:opacity-90 transition-opacity font-medium">Open Account</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero-gradient" style="min-height:100svh;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 24px 60px;">
+    <div class="max-w-5xl mx-auto text-center">
+      <p style="font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:#d4a8c0;margin-bottom:20px;">LA Fashion District · Wholesale Only</p>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.8rem,7vw,5.2rem);font-weight:700;color:#fdf4f8;line-height:1.08;margin-bottom:24px;">
+        Contemporary Women's<br/>Wholesale Clothing,<br/>
+        <em style="font-style:italic;color:#f0b8cc;">Direct from LA.</em>
+      </h1>
+      <p style="font-family:'Jost',sans-serif;font-size:1.1rem;font-weight:300;color:#e0c0d4;max-width:560px;margin:0 auto 36px;line-height:1.7;">
+        Ellison Apparel delivers the latest contemporary styles to retail buyers across the country — new arrivals weekly, competitive minimums, direct online ordering.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://www.shopellison.com/account/register"
+           style="background:linear-gradient(90deg,#e8728a,#9b3a7a);color:#fff;font-family:'Jost',sans-serif;font-size:0.88rem;letter-spacing:0.14em;text-transform:uppercase;padding:18px 40px;border-radius:2px;min-height:56px;display:inline-flex;align-items:center;font-weight:600;"
+           class="hover:opacity-90 transition-opacity w-full sm:w-auto justify-center">
+          Open a Wholesale Account
+        </a>
+        <a href="https://www.shopellison.com/collections/new-arrivals"
+           style="border:1px solid rgba(255,255,255,0.4);color:#fdf4f8;font-family:'Jost',sans-serif;font-size:0.88rem;letter-spacing:0.14em;text-transform:uppercase;padding:18px 40px;border-radius:2px;min-height:56px;display:inline-flex;align-items:center;font-weight:400;"
+           class="hover:border-white transition-colors w-full sm:w-auto justify-center">
+          Browse New Arrivals
+        </a>
+      </div>
+      <!-- Micro trust bar -->
+      <div class="flex flex-wrap justify-center gap-8 mt-16" style="border-top:1px solid rgba(255,255,255,0.12);padding-top:32px;">
+        <div class="text-center">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#f5e0ec;">10,000+</p>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#c4a0b8;">Retail Buyers</p>
+        </div>
+        <div class="text-center">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#f5e0ec;">Weekly</p>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#c4a0b8;">New Arrivals</p>
+        </div>
+        <div class="text-center">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#f5e0ec;">LA</p>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#c4a0b8;">Fashion District</p>
+        </div>
+        <div class="text-center">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#f5e0ec;">MAGIC</p>
+          <p style="font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:#c4a0b8;">Las Vegas 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST STRIP ===================== -->
+  <section style="background:linear-gradient(90deg,#f9f0f5,#f2e8f0);padding:28px 24px;">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-center items-center gap-6 text-center">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.4rem;">🏙️</span>
+        <span style="font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.1em;color:#5a3050;text-transform:uppercase;font-weight:500;">Based in LA Fashion District</span>
+      </div>
+      <div style="width:1px;height:24px;background:#d4b0c8;" class="hidden sm:block"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.4rem;">📦</span>
+        <span style="font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.1em;color:#5a3050;text-transform:uppercase;font-weight:500;">Direct Online Ordering</span>
+      </div>
+      <div style="width:1px;height:24px;background:#d4b0c8;" class="hidden sm:block"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.4rem;">✨</span>
+        <span style="font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.1em;color:#5a3050;text-transform:uppercase;font-weight:500;">Contemporary Quality</span>
+      </div>
+      <div style="width:1px;height:24px;background:#d4b0c8;" class="hidden sm:block"></div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:1.4rem;">🎪</span>
+        <span style="font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.1em;color:#5a3050;text-transform:uppercase;font-weight:500;">MAGIC LV Exhibitor</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CATEGORY GRID ===================== -->
+  <section style="background:linear-gradient(180deg,#1a0a2e 0%,#2a1045 100%);padding:80px 24px;">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:#c4a0b8;margin-bottom:12px;">Wholesale Catalog</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fdf4f8;">Shop by Category</h2>
+        <p style="font-family:'Jost',sans-serif;font-size:0.95rem;color:#c4a0b8;margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;">Browse the full Ellison Apparel wholesale catalog. New styles added every week across all categories.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+        <!-- Tops -->
+        <a href="https://www.shopellison.com/collections/tops" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=600&q=80" alt="Women's Tops Wholesale" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Tops</span>
+          </div>
+        </a>
+
+        <!-- Dresses -->
+        <a href="https://www.shopellison.com/collections/dresses" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Women's Dresses Wholesale" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Dresses</span>
+          </div>
+        </a>
+
+        <!-- Bottoms -->
+        <a href="https://www.shopellison.com/collections/bottoms" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1509551388413-e18d0ac5d495?auto=format&fit=crop&w=600&q=80" alt="Women's Bottoms Wholesale" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Bottoms</span>
+          </div>
+        </a>
+
+        <!-- Denim -->
+        <a href="https://www.shopellison.com/collections/denim-by-ellison" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80" alt="Denim by Ellison Wholesale" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Denim by Ellison</span>
+          </div>
+        </a>
+
+        <!-- Jackets & Blazers -->
+        <a href="https://www.shopellison.com/collections/jackets-blazers" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" alt="Jackets and Blazers Wholesale" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Jackets &amp; Blazers</span>
+          </div>
+        </a>
+
+        <!-- Sweaters -->
+        <a href="https://www.shopellison.com/collections/sweaters-cardigans" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" alt="Sweaters and Cardigans Wholesale" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Sweaters &amp; Cardigans</span>
+          </div>
+        </a>
+
+        <!-- Accessories -->
+        <a href="https://www.shopellison.com/collections/accessories" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80" alt="Accessories Wholesale" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Accessories</span>
+          </div>
+        </a>
+
+        <!-- Pre-Orders -->
+        <a href="https://www.shopellison.com/collections/pre-orders" class="category-card" style="border-radius:4px;overflow:hidden;display:block;position:relative;">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80" alt="Pre-Order Wholesale Clothing" style="width:100%;height:220px;object-fit:cover;display:block;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(20,5,40,0.85));display:flex;align-items:flex-end;padding:16px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:#fff;">Pre-Orders</span>
+          </div>
+        </a>
+
+      </div>
+      <div class="text-center mt-10">
+        <a href="https://www.shopellison.com/collections/all"
+           style="border:1px solid rgba(255,255,255,0.35);color:#fdf4f8;font-family:'Jost',sans-serif;font-size:0.82rem;letter-spacing:0.16em;text-transform:uppercase;padding:14px 36px;border-radius:2px;display:inline-block;min-height:48px;"
+           class="hover:border-white transition-colors">
+          View Full Catalog
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section style="background:linear-gradient(135deg,#f9f0f5 0%,#ede0ea 100%);padding:80px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:#9b3a7a;margin-bottom:12px;">For New Buyers</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#1a0a2e;">How to Buy Wholesale</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="text-center" style="position:relative;">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,#c4607a,#7b2d6e);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;">1</span>
+          </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#1a0a2e;margin-bottom:10px;">Create Your Account</h3>
+          <p style="font-family:'Jost',sans-serif;font-size:0.92rem;color:#5a3050;line-height:1.7;">Register as a retail buyer at shopellison.com. Approval is fast — most accounts are activated within one business day.</p>
+        </div>
+
+        <div class="text-center">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,#c4607a,#7b2d6e);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;">2</span>
+          </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#1a0a2e;margin-bottom:10px;">Browse the Catalog</h3>
+          <p style="font-family:'Jost',sans-serif;font-size:0.92rem;color:#5a3050;line-height:1.7;">Explore hundreds of contemporary women's styles — tops, dresses, denim, jackets, and more — updated weekly with fresh arrivals.</p>
+        </div>
+
+        <div class="text-center">
+          <div style="width:64px;height:64px;background:linear-gradient(135deg,#c4607a,#7b2d6e);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;">3</span>
+          </div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:#1a0a2e;margin-bottom:10px;">Place Your Order</h3>
+          <p style="font-family:'Jost',sans-serif;font-size:0.92rem;color:#5a3050;line-height:1.7;">Order directly online with secure payment. Need help? Our customer service team is ready to assist with sizing, minimums, and shipping.</p>
+        </div>
+
+      </div>
+      <div class="text-center mt-12">
+        <a href="https://www.shopellison.com/account/register"
+           style="background:linear-gradient(90deg,#c4607a,#7b2d6e);color:#fff;font-family:'Jost',sans-serif;font-size:0.88rem;letter-spacing:0.14em;text-transform:uppercase;padding:18px 44px;border-radius:2px;display:inline-block;min-height:56px;font-weight:600;"
+           class="hover:opacity-90 transition-opacity">
+          Open a Wholesale Account
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRADESHOW ===================== -->
+  <section style="background:linear-gradient(135deg,#1a0a2e 0%,#3a1060 50%,#2d1155 100%);padding:80px 24px;">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:#c4a0b8;margin-bottom:12px;">Find Us In Person</p>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fdf4f8;margin-bottom:20px;">MAGIC Las Vegas 2026</h2>
+          <p style="font-family:'Jost',sans-serif;font-size:1rem;color:#e0c0d4;line-height:1.7;margin-bottom:28px;">
+            Meet the Ellison Apparel team at MAGIC Las Vegas — the industry's premier wholesale fashion tradeshow. See the full collection in person, meet our buyers team, and place orders on the spot.
+          </p>
+          <div class="flex flex-col gap-4 mb-8">
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <span style="font-size:1.3rem;margin-top:2px;">📅</span>
+              <div>
+                <p style="font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#c4a0b8;margin-bottom:2px;">Dates</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:#fdf4f8;">February 17–19, 2026</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <span style="font-size:1.3rem;margin-top:2px;">📍</span>
+              <div>
+                <p style="font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:0.12em;text-transform:uppercase;color:#c4a0b8;margin-bottom:2px;">Location</p>
+                <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:#fdf4f8;">Central Hall · Booth #70610</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.shopellison.com/pages/tradeshow"
+             style="border:1px solid rgba(244,200,220,0.5);color:#fdf4f8;font-family:'Jost',sans-serif;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;padding:14px 32px;border-radius:2px;display:inline-block;min-height:48px;"
+             class="hover:border-white transition-colors">
+            View Tradeshow Schedule
+          </a>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:4px;padding:40px;text-align:center;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:700;color:#fdf4f8;line-height:1;">MAGIC</p>
+          <p style="font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:0.2em;text-transform:uppercase;color:#c4a0b8;margin-bottom:24px;">Las Vegas · February 2026</p>
+          <div style="background:linear-gradient(90deg,#c4607a,#7b2d6e);border-radius:2px;padding:16px 24px;margin-bottom:16px;">
+            <p style="font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:4px;">Booth Number</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:#fff;">#70610</p>
+          </div>
+          <p style="font-family:'Jost',sans-serif;font-size:0.85rem;color:#c4a0b8;">Central Hall · Las Vegas Convention Center</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== UGC / SOCIAL PROOF ===================== -->
+  <section style="background:linear-gradient(180deg,#f9f0f5 0%,#f2e4ee 100%);padding:80px 24px;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:#9b3a7a;margin-bottom:12px;">Community</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#1a0a2e;">#EllisonGirls</h2>
+        <p style="font-family:'Jost',sans-serif;font-size:0.95rem;color:#5a3050;margin-top:12px;">Tag <strong>@ShopEllison</strong>, <strong>#EllisonApparel</strong>, or <strong>#ShopEllison</strong> to be featured.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <a href="https://www.instagram.com/shopellison" target="_blank" rel="noopener" style="border-radius:4px;overflow:hidden;display:block;aspect-ratio:1/1;">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=400&q=80" alt="Ellison Apparel community style" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </a>
+        <a href="https://www.instagram.com/shopellison" target="_blank" rel="noopener" style="border-radius:4px;overflow:hidden;display:block;aspect-ratio:1/1;">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ellison Apparel community style" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </a>
+        <a href="https://www.instagram.com/shopellison" target="_blank" rel="noopener" style="border-radius:4px;overflow:hidden;display:block;aspect-ratio:1/1;">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=400&q=80" alt="Ellison Apparel community style" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </a>
+        <a href="https://www.instagram.com/shopellison" target="_blank" rel="noopener" style="border-radius:4px;overflow:hidden;display:block;aspect-ratio:1/1;">
+          <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?auto=format&fit=crop&w=400&q=80" alt="Ellison Apparel community style" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </a>
+        <a href="https://www.instagram.com/shopellison" target="_blank" rel="noopener" style="border-radius:4px;overflow:hidden;display:block;aspect-ratio:1/1;">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Ellison Apparel community style" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </a>
+        <a href="https://www.instagram.com/shopellison" target="_blank" rel="noopener" style="border-radius:4px;overflow:hidden;display:block;aspect-ratio:1/1;">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=400&q=80" alt="Ellison Apparel community style" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </a>
+      </div>
+      <div class="text-center mt-8">
+        <a href="https://www.instagram.com/shopellison" target="_blank" rel="noopener"
+           style="font-family:'Jost',sans-serif;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:#9b3a7a;border-bottom:1px solid #9b3a7a;padding-bottom:2px;"
+           class="hover:text-purple-900 transition-colors">
+          Follow @ShopEllison on Instagram
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EMAIL SIGNUP ===================== -->
+  <section style="background:linear-gradient(135deg,#2d1155 0%,#7b2d6e 60%,#c4607a 100%);padding:80px 24px;">
+    <div class="max-w-2xl mx-auto text-center">
+      <p style="font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:#f0c8dc;margin-bottom:12px;">Stay Ahead</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#fdf4f8;margin-bottom:16px;">First Access to New Arrivals</h2>
+      <p style="font-family:'Jost',sans-serif;font-size:1rem;color:#e8c8d8;line-height:1.7;margin-bottom:36px;">
+        Get new styles, exclusive buyer promotions, and tradeshow previews delivered to your inbox before they go live. No noise — just what matters for your store.
+      </p>
+      <form action="https://www.shopellison.com/newsletter" method="POST" style="display:flex;flex-direction:column;gap:12px;max-width:460px;margin:0 auto;">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input
+            type="email"
+            name="email"
+            placeholder="Your buyer email address"
+            required
+            style="flex:1;padding:16px 20px;border:1px solid rgba(255,255,255,0.3);background:rgba(255,255,255,0.1);color:#fff;border-radius:2px;font-family:'Jost',sans-serif;font-size:0.9rem;min-height:52px;"
+            class="placeholder-pink-200 focus:outline-none focus:border-white"
+          />
+          <button
+            type="submit"
+            style="background:#fff;color:#7b2d6e;font-family:'Jost',sans-serif;font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;padding:16px 28px;border-radius:2
