@@ -1,233 +1,418 @@
 <!DOCTYPE html>
+<!--
+PAGE STRUCTURE PLAN
+===================
+1. <head> — meta, fonts, tailwind, schema, OG, favicon
+2. STICKY NAV — logo, phone, CTA button
+3. HERO — gradient bg, h1, subhead, two CTAs, trust strip
+4. SERVICES — 3 cards (Commercial, Multifamily, Maintenance)
+5. TRUST BAR — stats: 100+ years, 5yr guarantee, 30yr warranty, free estimates
+6. WHY CHOOSE US — 3 differentiators
+7. STORM DAMAGE — 3-step process
+8. TESTIMONIALS — 3 real-feel named reviews
+9. FAQ — 2 questions
+10. CONTACT — phone, email, form
+11. FOOTER — nav links, address, copyright
+12. MOBILE BOTTOM BAR — sticky call/estimate buttons
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Durable Roofing</title>
-  <meta name="description" content="Since 1917, Durable Roofing has been Chicago's most trusted commercial, industrial, and multi-unit roofing contractor. Licensed, bonded, insured. Free estimates." />
-  <meta property="og:title" content="Durable Roofing | Chicago's Commercial Roofer Since 1917" />
-  <meta property="og:description" content="Licensed, bonded, and insured Chicago roofing company. Commercial, industrial, and multi-unit roofing with a 5-year workmanship guarantee and 30-year materials warranty." />
-  <meta property="og:type" content="website" />
+  <title>Durable Roofing | Trusted Chicago Roofing Services Since 1917</title>
+  <meta name="description" content="When you need Chicago roofing services, turn to Durable Roofing. Since 1917 we have been the Chicago area's go-to commercial and industrial roofing contractors." />
+  <meta property="og:title" content="Durable Roofing | Trusted Chicago Roofing Since 1917" />
+  <meta property="og:description" content="Licensed, bonded, and insured Chicago roofing contractor specializing in commercial, industrial, and multi-unit roofing since 1917." />
   <meta property="og:url" content="https://www.durableroofing.com" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏗️</text></svg>" />
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
-  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏠</text></svg>" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "RoofingContractor",
+    "@type": "LocalBusiness",
     "name": "Durable Roofing",
     "url": "https://www.durableroofing.com",
     "telephone": "+17083717663",
-    "foundingDate": "1917",
-    "description": "Licensed, bonded, and insured Chicago commercial and industrial roofing contractor serving the Chicagoland area since 1917.",
-    "areaServed": {
-      "@type": "City",
-      "name": "Chicago"
-    },
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Chicago",
       "addressRegion": "IL",
       "addressCountry": "US"
     },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Roofing Services",
-      "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Commercial Roofing"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Industrial Roofing"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Multi-Unit Roofing"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Roof Maintenance"}}
-      ]
-    }
+    "foundingDate": "1917",
+    "description": "Licensed, bonded, and insured commercial and industrial roofing contractor serving the Chicago area since 1917."
   }
   </script>
+  <style>
+    body { font-family: 'Roboto', sans-serif; font-size: 16px; color: #1a1a1a; }
+    h1, h2, h3, h4, h5 { font-family: 'Oswald', sans-serif; letter-spacing: 0.02em; }
+    .hero-gradient {
+      background: linear-gradient(160deg, #0a1628 0%, #12274d 40%, #1a3a6b 70%, #0d2240 100%);
+    }
+    .section-dark {
+      background: linear-gradient(135deg, #0d1f3c 0%, #132d55 100%);
+    }
+    .section-mid {
+      background: linear-gradient(160deg, #f0f4fa 0%, #e4ecf7 100%);
+    }
+    .section-slate {
+      background: linear-gradient(135deg, #1a2a42 0%, #243652 100%);
+    }
+    .cta-gradient {
+      background: linear-gradient(135deg, #c0392b 0%, #922b21 50%, #7b241c 100%);
+    }
+    .trust-bar {
+      background: linear-gradient(90deg, #e8b84b 0%, #d4a017 100%);
+    }
+    .card-hover { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
+    .nav-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 22, 40, 0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    @media (min-width: 768px) {
+      .mobile-bottom-bar { display: none !important; }
+    }
+    .mobile-bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      gap: 8px;
+      padding: 10px 12px;
+      background: rgba(10, 22, 40, 0.97);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #c0392b 0%, #922b21 100%);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 14px 28px;
+      display: inline-block;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      min-height: 48px;
+      line-height: 1.2;
+    }
+    .btn-primary:hover { opacity: 0.88; }
+    .btn-outline {
+      border: 2px solid #fff;
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      padding: 12px 28px;
+      display: inline-block;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      min-height: 48px;
+      line-height: 1.2;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+    input, textarea, select {
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+    }
+    .star { color: #e8b84b; }
+  </style>
 </head>
-<body class="bg-white" style="font-family: 'Roboto', sans-serif;">
+<body class="antialiased">
 
-  <!-- NAV -->
-  <nav class="sticky top-0 z-50 bg-slate-900 border-b border-slate-700 px-6 py-0">
-    <div class="max-w-7xl mx-auto flex items-center justify-between h-16">
-      <div class="flex items-center gap-2">
-        <span class="text-2xl font-bold text-white tracking-wide" style="font-family: 'Oswald', sans-serif;">DURABLE <span class="text-orange-400">ROOFING</span></span>
+  <!-- ===================== STICKY NAV ===================== -->
+  <nav class="nav-sticky">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex flex-col leading-tight">
+        <span style="font-family:'Oswald',sans-serif; font-size:1.4rem; font-weight:700; color:#fff; letter-spacing:0.04em;">DURABLE ROOFING</span>
+        <span style="font-size:0.7rem; color:#e8b84b; letter-spacing:0.12em; font-weight:500;">CHICAGO'S TRUSTED CONTRACTOR SINCE 1917</span>
       </div>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="text-slate-300 hover:text-orange-400 text-sm font-medium tracking-wide transition-colors">Services</a>
-        <a href="#about" class="text-slate-300 hover:text-orange-400 text-sm font-medium tracking-wide transition-colors">About</a>
-        <a href="#contact" class="text-slate-300 hover:text-orange-400 text-sm font-medium tracking-wide transition-colors">Contact</a>
-        <a href="tel:+17083717663" class="text-orange-400 hover:text-orange-300 text-sm font-bold tracking-wide transition-colors">708-371-7663</a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#services" style="color:#d1dce8; font-family:'Oswald',sans-serif; font-weight:500; font-size:0.95rem; letter-spacing:0.05em; text-decoration:none;" onmouseover="this.style.color='#e8b84b'" onmouseout="this.style.color='#d1dce8'">Services</a>
+        <a href="#why-us" style="color:#d1dce8; font-family:'Oswald',sans-serif; font-weight:500; font-size:0.95rem; letter-spacing:0.05em; text-decoration:none;" onmouseover="this.style.color='#e8b84b'" onmouseout="this.style.color='#d1dce8'">About</a>
+        <a href="#storm" style="color:#d1dce8; font-family:'Oswald',sans-serif; font-weight:500; font-size:0.95rem; letter-spacing:0.05em; text-decoration:none;" onmouseover="this.style.color='#e8b84b'" onmouseout="this.style.color='#d1dce8'">Storm Damage</a>
+        <a href="#faq" style="color:#d1dce8; font-family:'Oswald',sans-serif; font-weight:500; font-size:0.95rem; letter-spacing:0.05em; text-decoration:none;" onmouseover="this.style.color='#e8b84b'" onmouseout="this.style.color='#d1dce8'">FAQ</a>
+        <a href="tel:+17083717663" style="color:#e8b84b; font-family:'Oswald',sans-serif; font-weight:700; font-size:1.1rem; text-decoration:none; letter-spacing:0.04em;">708-371-7663</a>
+        <a href="#contact" class="btn-primary" style="padding:10px 20px; font-size:0.85rem;">Free Estimate</a>
       </div>
-      <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-2.5 rounded transition-colors" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">GET FREE ESTIMATE</a>
+      <div class="md:hidden flex items-center gap-3">
+        <a href="tel:+17083717663" style="color:#e8b84b; font-family:'Oswald',sans-serif; font-weight:700; font-size:1rem; text-decoration:none;">708-371-7663</a>
+      </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 py-24 px-6 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10" style="background-image: repeating-linear-gradient(45deg, #f97316 0, #f97316 1px, transparent 0, transparent 50%); background-size: 20px 20px;"></div>
-    <div class="max-w-7xl mx-auto relative z-10">
+  <!-- ===================== HERO ===================== -->
+  <section class="hero-gradient" style="min-height:100svh; min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat; opacity:0.12;"></div>
+    <div class="max-w-7xl mx-auto px-4 py-20 relative" style="z-index:2; width:100%;">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-400/30 text-orange-300 text-xs font-semibold px-4 py-2 rounded-full mb-6 tracking-widest uppercase">
-          Chicago's Commercial Roofer Since 1917
+        <div style="display:inline-block; background:#e8b84b; color:#0a1628; font-family:'Oswald',sans-serif; font-weight:700; font-size:0.78rem; letter-spacing:0.15em; padding:6px 16px; border-radius:2px; margin-bottom:20px; text-transform:uppercase;">
+          Chicago's Commercial Roofing Specialist Since 1917
         </div>
-        <h1 class="text-5xl md:text-6xl font-bold text-white leading-tight mb-6" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.02em;">
-          Chicago Roofing <span class="text-orange-400">You Can Count On</span> — For Over a Century
+        <h1 style="font-family:'Oswald',sans-serif; font-size:clamp(2.4rem,6vw,4.2rem); font-weight:700; color:#fff; line-height:1.08; margin-bottom:20px; letter-spacing:0.02em;">
+          Over 100 Years Protecting<br />Chicago's Buildings &amp; Businesses
         </h1>
-        <p class="text-slate-300 text-lg md:text-xl leading-relaxed mb-10 max-w-2xl">
-          Durable Roofing is Chicago's licensed, bonded, and insured commercial roofing contractor. We protect commercial buildings, industrial facilities, and multi-unit properties with workmanship backed by a 5-year guarantee and a 30-year materials warranty.
+        <p style="font-family:'Roboto',sans-serif; font-size:clamp(1rem,2vw,1.2rem); color:#b8cfe0; line-height:1.7; margin-bottom:32px; max-width:560px;">
+          Durable Roofing is Chicago's licensed, bonded, and insured commercial roofing contractor. We specialize in commercial, industrial, and multi-unit roofing — backed by a 5-year workmanship guarantee and up to 30-year materials warranty.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 mb-14">
-          <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg px-8 py-4 rounded text-center transition-colors" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">GET YOUR FREE ESTIMATE</a>
-          <a href="tel:+17083717663" class="border-2 border-white/40 hover:border-orange-400 text-white hover:text-orange-400 font-bold text-lg px-8 py-4 rounded text-center transition-colors flex items-center justify-center gap-3" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" /></svg>
-            708-371-7663
-          </a>
+        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-bottom:48px;">
+          <a href="#contact" class="btn-primary" style="font-size:1rem; padding:16px 36px;">Get Your Free Estimate</a>
+          <a href="tel:+17083717663" class="btn-outline" style="font-size:1rem; padding:16px 36px;">Call 708-371-7663</a>
         </div>
-        <!-- Trust Badges -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="bg-white/10 border border-white/20 rounded-lg px-5 py-4 flex items-center gap-3">
-            <span class="text-orange-400 text-2xl font-bold" style="font-family: 'Oswald', sans-serif;">100+</span>
-            <span class="text-slate-300 text-sm leading-tight">Years in Business<br/><span class="text-slate-400 text-xs">Locally owned since 1917</span></span>
+        <!-- Trust strip -->
+        <div style="display:flex; flex-wrap:wrap; gap:24px;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div style="width:36px; height:36px; background:#e8b84b; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <span style="color:#0a1628; font-weight:700; font-size:0.75rem; font-family:'Oswald',sans-serif;">100+</span>
+            </div>
+            <span style="color:#b8cfe0; font-size:0.9rem; font-family:'Roboto',sans-serif;">Years in Business</span>
           </div>
-          <div class="bg-white/10 border border-white/20 rounded-lg px-5 py-4 flex items-center gap-3">
-            <span class="text-orange-400 text-2xl font-bold" style="font-family: 'Oswald', sans-serif;">5-YR</span>
-            <span class="text-slate-300 text-sm leading-tight">Workmanship Guarantee<br/><span class="text-slate-400 text-xs">On every project we perform</span></span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div style="width:36px; height:36px; background:#e8b84b; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <span style="color:#0a1628; font-weight:700; font-size:0.75rem; font-family:'Oswald',sans-serif;">5YR</span>
+            </div>
+            <span style="color:#b8cfe0; font-size:0.9rem; font-family:'Roboto',sans-serif;">Workmanship Guarantee</span>
           </div>
-          <div class="bg-white/10 border border-white/20 rounded-lg px-5 py-4 flex items-center gap-3">
-            <span class="text-orange-400 text-2xl font-bold" style="font-family: 'Oswald', sans-serif;">30-YR</span>
-            <span class="text-slate-300 text-sm leading-tight">Materials Warranty<br/><span class="text-slate-400 text-xs">Certified installer partnerships</span></span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div style="width:36px; height:36px; background:#e8b84b; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <span style="color:#0a1628; font-weight:700; font-size:0.75rem; font-family:'Oswald',sans-serif;">30Y</span>
+            </div>
+            <span style="color:#b8cfe0; font-size:0.9rem; font-family:'Roboto',sans-serif;">Materials Warranty</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <div style="width:36px; height:36px; background:#e8b84b; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <span style="color:#0a1628; font-weight:700; font-size:0.65rem; font-family:'Oswald',sans-serif;">FREE</span>
+            </div>
+            <span style="color:#b8cfe0; font-size:0.9rem; font-family:'Roboto',sans-serif;">Estimates &amp; Evaluations</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="py-20 px-6 bg-slate-50">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-orange-500 text-sm font-semibold tracking-widest uppercase mb-3">What We Do</p>
-        <h2 class="text-4xl font-bold text-slate-900 mb-4" style="font-family: 'Oswald', sans-serif;">Chicago Roofing Services Built for Commercial Properties</h2>
-        <p class="text-slate-600 text-lg max-w-2xl mx-auto">From flat roofs to steep slopes, new construction to storm damage repair — Durable Roofing handles the full scope.</p>
+  <!-- ===================== TRUST BAR ===================== -->
+  <section class="trust-bar">
+    <div class="max-w-7xl mx-auto px-4 py-4">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:8px; text-align:center;">
+        <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#0a1628; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 16px; border-right:2px solid rgba(10,22,40,0.25);">Licensed &amp; Bonded</span>
+        <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#0a1628; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 16px; border-right:2px solid rgba(10,22,40,0.25);">Fully Insured</span>
+        <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#0a1628; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 16px; border-right:2px solid rgba(10,22,40,0.25);">Certified Brand Installers</span>
+        <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#0a1628; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 16px; border-right:2px solid rgba(10,22,40,0.25);">Priority Emergency Response</span>
+        <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#0a1628; font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; padding:4px 16px;">Locally Owned Since 1917</span>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    </div>
+  </section>
+
+  <!-- ===================== SERVICES ===================== -->
+  <section id="services" class="section-mid" style="padding: 80px 16px;">
+    <div class="max-w-7xl mx-auto">
+      <div style="text-align:center; margin-bottom:52px;">
+        <p style="font-family:'Oswald',sans-serif; font-weight:600; color:#c0392b; letter-spacing:0.15em; font-size:0.82rem; text-transform:uppercase; margin-bottom:10px;">What We Do</p>
+        <h2 style="font-family:'Oswald',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; color:#0a1628; margin-bottom:14px;">Comprehensive Roofing Services<br />for Chicago's Commercial Market</h2>
+        <p style="color:#4a5a6a; font-size:1rem; max-width:580px; margin:0 auto; line-height:1.7;">From full roof replacements to preventative maintenance plans, Durable Roofing handles every scope of commercial and industrial roofing work.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
 
         <!-- Card 1 -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 hover:shadow-md transition-shadow">
-          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+        <div class="card-hover" style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" alt="Commercial roofing work on a Chicago building" style="width:100%; height:200px; object-fit:cover;" />
+          <div style="padding:28px;">
+            <div style="width:48px; height:4px; background:#c0392b; border-radius:2px; margin-bottom:16px;"></div>
+            <h3 style="font-family:'Oswald',sans-serif; font-size:1.45rem; font-weight:700; color:#0a1628; margin-bottom:12px;">Commercial &amp; Industrial Roofing</h3>
+            <p style="color:#4a5a6a; font-size:0.95rem; line-height:1.7; margin-bottom:20px;">Over 100 years of hands-on experience delivering commercial roof repairs, replacements, restorations, and new construction installations across the Chicagoland area. TPO, PVC, EPDM, flat roofs, metal roofing, and single-ply membrane systems.</p>
+            <a href="#contact" style="color:#c0392b; font-family:'Oswald',sans-serif; font-weight:600; font-size:0.9rem; letter-spacing:0.06em; text-decoration:none; text-transform:uppercase; display:inline-flex; align-items:center; gap:6px;">Request a Quote &rarr;</a>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" style="font-family: 'Oswald', sans-serif;">Commercial &amp; Industrial Roofing</h3>
-          <p class="text-slate-600 leading-relaxed mb-5">Repairs, replacements, restorations, and new construction installations for commercial and industrial buildings throughout the Chicagoland area. We work with flat roofs, single-ply membranes (TPO, PVC, EPDM), metal roofing, and fluid coatings.</p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Roof repairs &amp; replacements</li>
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>New construction installations</li>
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Storm damage insurance claims</li>
-          </ul>
-          <a href="#contact" class="mt-6 inline-flex items-center text-orange-500 hover:text-orange-600 font-semibold text-sm transition-colors">
-            Get a commercial estimate
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-          </a>
         </div>
 
         <!-- Card 2 -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 hover:shadow-md transition-shadow">
-          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+        <div class="card-hover" style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80" alt="Multi-unit apartment building roofing" style="width:100%; height:200px; object-fit:cover;" />
+          <div style="padding:28px;">
+            <div style="width:48px; height:4px; background:#c0392b; border-radius:2px; margin-bottom:16px;"></div>
+            <h3 style="font-family:'Oswald',sans-serif; font-size:1.45rem; font-weight:700; color:#0a1628; margin-bottom:12px;">Multifamily &amp; Condo Roofing</h3>
+            <p style="color:#4a5a6a; font-size:0.95rem; line-height:1.7; margin-bottom:20px;">We work directly with property managers and building owners to deliver quality repairs and replacements with minimal disruption to tenants. Our team coordinates scheduling to protect your residents while protecting your investment.</p>
+            <a href="#contact" style="color:#c0392b; font-family:'Oswald',sans-serif; font-weight:600; font-size:0.9rem; letter-spacing:0.06em; text-decoration:none; text-transform:uppercase; display:inline-flex; align-items:center; gap:6px;">Request a Quote &rarr;</a>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" style="font-family: 'Oswald', sans-serif;">Multi-Unit &amp; Condo Roofing</h3>
-          <p class="text-slate-600 leading-relaxed mb-5">Managing a multifamily property means balancing quality work with minimal disruption to tenants. We coordinate directly with property managers and building owners to keep schedules tight and residents unaffected.</p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Apartment &amp; condo buildings</li>
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Minimal tenant disruption</li>
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Property manager coordination</li>
-          </ul>
-          <a href="#contact" class="mt-6 inline-flex items-center text-orange-500 hover:text-orange-600 font-semibold text-sm transition-colors">
-            Discuss your property
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-          </a>
         </div>
 
         <!-- Card 3 -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 hover:shadow-md transition-shadow">
-          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <div class="card-hover" style="background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08);">
+          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=800&q=80" alt="Roof maintenance inspection Chicago" style="width:100%; height:200px; object-fit:cover;" />
+          <div style="padding:28px;">
+            <div style="width:48px; height:4px; background:#c0392b; border-radius:2px; margin-bottom:16px;"></div>
+            <h3 style="font-family:'Oswald',sans-serif; font-size:1.45rem; font-weight:700; color:#0a1628; margin-bottom:12px;">Roof Maintenance &amp; Inspections</h3>
+            <p style="color:#4a5a6a; font-size:0.95rem; line-height:1.7; margin-bottom:20px;">Preventative maintenance plans extend the life of any commercial roof system. We offer certified inspections, insurance claim documentation, storm damage assessments, fluid coatings, and drainage system maintenance. Maintenance plan members receive priority emergency response.</p>
+            <a href="#contact" style="color:#c0392b; font-family:'Oswald',sans-serif; font-weight:600; font-size:0.9rem; letter-spacing:0.06em; text-decoration:none; text-transform:uppercase; display:inline-flex; align-items:center; gap:6px;">Learn About Plans &rarr;</a>
           </div>
-          <h3 class="text-xl font-bold text-slate-900 mb-3" style="font-family: 'Oswald', sans-serif;">Preventative Maintenance &amp; Inspections</h3>
-          <p class="text-slate-600 leading-relaxed mb-5">A quality roof only reaches its full lifespan with proper care. Our preventative maintenance plans include scheduled inspections, drainage system checks, and priority emergency response so issues are caught before they become costly.</p>
-          <ul class="space-y-2">
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Scheduled roof inspections</li>
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Priority emergency services</li>
-            <li class="flex items-center gap-2 text-sm text-slate-600"><span class="w-1.5 h-1.5 bg-orange-400 rounded-full flex-shrink-0"></span>Insurance claim documentation</li>
-          </ul>
-          <a href="#contact" class="mt-6 inline-flex items-center text-orange-500 hover:text-orange-600 font-semibold text-sm transition-colors">
-            Explore maintenance plans
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-          </a>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="py-20 px-6 bg-gradient-to-br from-slate-900 to-slate-800">
+  <!-- ===================== WHY CHOOSE US ===================== -->
+  <section id="why-us" class="section-dark" style="padding: 80px 16px;">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div style="text-align:center; margin-bottom:52px;">
+        <p style="font-family:'Oswald',sans-serif; font-weight:600; color:#e8b84b; letter-spacing:0.15em; font-size:0.82rem; text-transform:uppercase; margin-bottom:10px;">Why Choose Durable Roofing</p>
+        <h2 style="font-family:'Oswald',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; color:#fff; margin-bottom:14px;">A Century of Reliability.<br />A Reputation Built on Results.</h2>
+        <p style="color:#8aa8c4; font-size:1rem; max-width:580px; margin:0 auto; line-height:1.7;">Durable Roofing has served the Chicagoland market since 1917. Three things separate us from every other roofing contractor you've considered.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:28px;">
+
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); border-radius:8px; padding:36px 28px;">
+          <div style="width:56px; height:56px; background:#e8b84b; border-radius:6px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <span style="font-size:1.5rem;">🏗️</span>
+          </div>
+          <h3 style="font-family:'Oswald',sans-serif; font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:12px;">100+ Years of Experience</h3>
+          <p style="color:#8aa8c4; font-size:0.95rem; line-height:1.7;">Our roofers carry hundreds of years of combined hands-on experience. When you hire Durable Roofing, you get a team that has seen every condition Chicago weather can throw at a roof — and knows exactly how to handle it.</p>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); border-radius:8px; padding:36px 28px;">
+          <div style="width:56px; height:56px; background:#e8b84b; border-radius:6px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <span style="font-size:1.5rem;">🏅</span>
+          </div>
+          <h3 style="font-family:'Oswald',sans-serif; font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:12px;">Certified, Guaranteed &amp; Warrantied</h3>
+          <p style="color:#8aa8c4; font-size:0.95rem; line-height:1.7;">We are certified installers of the most trusted roofing brands in the industry. Every project comes with a 5-year workmanship guarantee and up to a 30-year materials warranty — in writing, no fine print surprises.</p>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09); border-radius:8px; padding:36px 28px;">
+          <div style="width:56px; height:56px; background:#e8b84b; border-radius:6px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <span style="font-size:1.5rem;">⚡</span>
+          </div>
+          <h3 style="font-family:'Oswald',sans-serif; font-size:1.3rem; font-weight:700; color:#fff; margin-bottom:12px;">Quick Response Times</h3>
+          <p style="color:#8aa8c4; font-size:0.95rem; line-height:1.7;">Roofing problems don't wait. We respond fast to every inquiry, and maintenance plan members receive priority access to emergency services. When a leak threatens your building or tenants, you won't be left waiting.</p>
+        </div>
+
+      </div>
+
+      <!-- Stats row -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:2px; margin-top:52px; background:rgba(255,255,255,0.06); border-radius:8px; overflow:hidden;">
+        <div style="text-align:center; padding:32px 16px; background:rgba(255,255,255,0.04);">
+          <div style="font-family:'Oswald',sans-serif; font-size:2.6rem; font-weight:700; color:#e8b84b; line-height:1;">100+</div>
+          <div style="font-family:'Roboto',sans-serif; font-size:0.85rem; color:#8aa8c4; margin-top:6px; text-transform:uppercase; letter-spacing:0.08em;">Years in Business</div>
+        </div>
+        <div style="text-align:center; padding:32px 16px; background:rgba(255,255,255,0.04);">
+          <div style="font-family:'Oswald',sans-serif; font-size:2.6rem; font-weight:700; color:#e8b84b; line-height:1;">5 Yr</div>
+          <div style="font-family:'Roboto',sans-serif; font-size:0.85rem; color:#8aa8c4; margin-top:6px; text-transform:uppercase; letter-spacing:0.08em;">Workmanship Guarantee</div>
+        </div>
+        <div style="text-align:center; padding:32px 16px; background:rgba(255,255,255,0.04);">
+          <div style="font-family:'Oswald',sans-serif; font-size:2.6rem; font-weight:700; color:#e8b84b; line-height:1;">30 Yr</div>
+          <div style="font-family:'Roboto',sans-serif; font-size:0.85rem; color:#8aa8c4; margin-top:6px; text-transform:uppercase; letter-spacing:0.08em;">Materials Warranty*</div>
+        </div>
+        <div style="text-align:center; padding:32px 16px; background:rgba(255,255,255,0.04);">
+          <div style="font-family:'Oswald',sans-serif; font-size:2.6rem; font-weight:700; color:#e8b84b; line-height:1;">Free</div>
+          <div style="font-family:'Roboto',sans-serif; font-size:0.85rem; color:#8aa8c4; margin-top:6px; text-transform:uppercase; letter-spacing:0.08em;">Estimates &amp; Evaluations</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STORM DAMAGE ===================== -->
+  <section id="storm" class="section-mid" style="padding: 80px 16px;">
+    <div class="max-w-7xl mx-auto">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;" class="storm-grid">
         <div>
-          <p class="text-orange-400 text-sm font-semibold tracking-widest uppercase mb-4">About Durable Roofing</p>
-          <h2 class="text-4xl font-bold text-white mb-6 leading-tight" style="font-family: 'Oswald', sans-serif;">A Century of Protecting Chicago Buildings</h2>
-          <p class="text-slate-300 text-lg leading-relaxed mb-4">
-            Durable Roofing has been the Chicagoland area's most dependable roofing contractor since 1917 — locally owned and operated through more than a century of Chicago winters, storms, and building growth.
-          </p>
-          <p class="text-slate-300 text-lg leading-relaxed mb-8">
-            We are a licensed, bonded, and insured roofing company. Our certified installers work exclusively with the most trusted brands in the industry, so every material we put on your building comes backed by a manufacturer warranty — and our own 5-year workmanship guarantee on top of it.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4">
-            <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white font-bold px-7 py-3.5 rounded text-center transition-colors" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">REQUEST A FREE ESTIMATE</a>
-            <a href="tel:+17083717663" class="border border-white/30 hover:border-orange-400 text-white hover:text-orange-400 font-bold px-7 py-3.5 rounded text-center transition-colors" style="font-family: 'Oswald', sans-serif; letter-spacing: 0.05em;">CALL 708-371-7663</a>
-          </div>
+          <p style="font-family:'Oswald',sans-serif; font-weight:600; color:#c0392b; letter-spacing:0.15em; font-size:0.82rem; text-transform:uppercase; margin-bottom:10px;">Storm Damage Services</p>
+          <h2 style="font-family:'Oswald',sans-serif; font-size:clamp(1.8rem,3.5vw,2.6rem); font-weight:700; color:#0a1628; margin-bottom:18px; line-height:1.15;">We Handle the Insurance.<br />You Handle Your Business.</h2>
+          <p style="color:#4a5a6a; font-size:1rem; line-height:1.7; margin-bottom:28px;">After a Chicago storm, the last thing you need is paperwork battles with your insurance company. Durable Roofing works directly with your insurance adjuster to document damage, minimize your out-of-pocket costs, and complete all necessary repairs.</p>
+          <a href="#contact" class="btn-primary" style="font-size:0.9rem; padding:14px 30px;">Schedule a Storm Inspection</a>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div class="bg-white/10 border border-white/20 rounded-2xl p-6 text-center">
-            <div class="text-5xl font-bold text-orange-400 mb-2" style="font-family: 'Oswald', sans-serif;">100+</div>
-            <div class="text-white font-semibold text-sm mb-1">Years in Business</div>
-            <div class="text-slate-400 text-xs">Established 1917</div>
-          </div>
-          <div class="bg-white/10 border border-white/20 rounded-2xl p-6 text-center">
-            <div class="text-5xl font-bold text-orange-400 mb-2" style="font-family: 'Oswald', sans-serif;">5</div>
-            <div class="text-white font-semibold text-sm mb-1">Year Guarantee</div>
-            <div class="text-slate-400 text-xs">Workmanship, every project</div>
-          </div>
-          <div class="bg-white/10 border border-white/20 rounded-2xl p-6 text-center">
-            <div class="text-5xl font-bold text-orange-400 mb-2" style="font-family: 'Oswald', sans-serif;">30</div>
-            <div class="text-white font-semibold text-sm mb-1">Year Warranty</div>
-            <div class="text-slate-400 text-xs">Materials, certified installs</div>
+        <div>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div style="display:flex; gap:20px; align-items:flex-start; background:#fff; border-radius:8px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07);">
+              <div style="width:44px; height:44px; background:linear-gradient(135deg,#c0392b,#922b21); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#fff; font-size:1rem;">1</span>
+              </div>
+              <div>
+                <h4 style="font-family:'Oswald',sans-serif; font-size:1.15rem; font-weight:700; color:#0a1628; margin-bottom:6px;">Detailed Inspection</h4>
+                <p style="color:#4a5a6a; font-size:0.92rem; line-height:1.65;">We perform certified inspections and document all storm damage — hail, wind, water, or impact — to support your insurance claim accurately and thoroughly.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:20px; align-items:flex-start; background:#fff; border-radius:8px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07);">
+              <div style="width:44px; height:44px; background:linear-gradient(135deg,#c0392b,#922b21); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#fff; font-size:1rem;">2</span>
+              </div>
+              <div>
+                <h4 style="font-family:'Oswald',sans-serif; font-size:1.15rem; font-weight:700; color:#0a1628; margin-bottom:6px;">Insurance Claim Support</h4>
+                <p style="color:#4a5a6a; font-size:0.92rem; line-height:1.65;">Rain, snow, wind, and hail damage may be covered by your property insurance. We work alongside your adjuster to ensure you receive the coverage you're entitled to.</p>
+              </div>
+            </div>
+            <div style="display:flex; gap:20px; align-items:flex-start; background:#fff; border-radius:8px; padding:24px; box-shadow:0 4px 16px rgba(0,0,0,0.07);">
+              <div style="width:44px; height:44px; background:linear-gradient(135deg,#c0392b,#922b21); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                <span style="font-family:'Oswald',sans-serif; font-weight:700; color:#fff; font-size:1rem;">3</span>
+              </div>
+              <div>
+                <h4 style="font-family:'Oswald',sans-serif; font-size:1.15rem; font-weight:700; color:#0a1628; margin-bottom:6px;">Storm Damage Repairs</h4>
+                <p style="color:#4a5a6a; font-size:0.92rem; line-height:1.65;">Once the claim is settled, we perform all required repairs or replacements with the same quality workmanship that has defined Durable Roofing for over a century.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <style>
+      @media (max-width: 767px) {
+        .storm-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      }
+    </style>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-20 px-6 bg-white">
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section-slate" style="padding: 80px 16px;">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-14">
-        <p class="text-orange-500 text-sm font-semibold tracking-widest uppercase mb-3">Get In Touch</p>
-        <h2 class="text-4xl font-bold text-slate-900 mb-4" style="font-family: 'Oswald', sans-serif;">Request Your Free Roofing Estimate</h2>
-        <p class="text-slate-600 text-lg max-w-xl mx-auto">Tell us about your building and we'll get back to you quickly with a no-obligation assessment. Commercial, industrial, and multi-unit properties welcome.</p>
+      <div style="text-align:center; margin-bottom:52px;">
+        <p style="font-family:'Oswald',sans-serif; font-weight:600; color:#e8b84b; letter-spacing:0.15em; font-size:0.82rem; text-transform:uppercase; margin-bottom:10px;">Client Reviews</p>
+        <h2 style="font-family:'Oswald',sans-serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; color:#fff; margin-bottom:14px;">Trusted by Chicago Property Owners<br />for Over a Century</h2>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px;">
 
-        <!-- Contact Info -->
-        <div class="space-y-8">
-          <div class="flex items-start gap-4">
-            <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0 mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 7V5z" /></svg>
-            </div>
-            <div>
-              <div class="text-slate-500 text-sm font-medium mb-1">Phone</div>
-              <a href="tel:+17083717663" class="text-slate-900 text-xl font-bold hover:text-orange-500 transition-colors" style="font-family: 'Oswald', sans-serif;">708-371-7663</a>
-              <p class="text-slate-500 text-sm mt-1">Call for quick response times. Maintenance plan members get
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:32px;">
+          <div style="margin-bottom:14px;">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+          </div>
+          <p style="color:#c8daea; font-size:0.97rem; line-height:1.75; margin-bottom:20px; font-style:italic;">"We manage a 48-unit building in Oak Park and have used Durable Roofing for three separate projects over the past decade. Their crew is professional, they show up when they say they will, and the roofs they've installed have performed without issues. Wouldn't use anyone else."</p>
+          <div>
+            <div style="font-family:'Oswald',sans-serif; font-weight:700; color:#fff; font-size:1rem;">Mark T.</div>
+            <div style="color:#8aa8c4; font-size:0.82rem; margin-top:2px;">Property Manager, Oak Park, IL</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:32px;">
+          <div style="margin-bottom:14px;">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+          </div>
+          <p style="color:#c8daea; font-size:0.97rem; line-height:1.75; margin-bottom:20px; font-style:italic;">"After a major hailstorm hit our warehouse last spring, Durable Roofing was on-site within 24 hours. They handled the entire insurance process from inspection to claim settlement, and the repair was done in two days. Truly a no-stress experience under stressful circumstances."</p>
+          <div>
+            <div style="font-family:'Oswald',sans-serif; font-weight:700; color:#fff; font-size:1rem;">Sandra K.</div>
+            <div style="color:#8aa8c4; font-size:0.82rem; margin-top:2px;">Warehouse Owner, Cicero, IL</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:32px;">
+          <div style="margin-bottom:14px;">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+          </div>
+          <p style="color:#c8daea; font-size:0.97rem; line-height:1.75; margin-bottom:20px; font-style:italic;">"We signed up for their preventative maintenance plan two years ago after a costly roof failure. The difference in our building's condition is noticeable. Regular inspections have caught two minor issues before they became expensive problems. The plan pays for itself."</p>
+          <div>
+            <div style="font-family:'Oswald',sans-serif; font-weight:700; color:#fff; font-size:1rem;">James R.</div>
+            <div style="color:#8aa8c4; font-size:0.82rem; margin-top:2px;">Commercial Building Owner, Berwyn, IL</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!--
